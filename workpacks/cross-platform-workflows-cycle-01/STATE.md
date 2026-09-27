@@ -21,32 +21,36 @@
 | 06 | Web Candidates 1–3 | COMPLETED | 0e93f0507c4403f4bfd23bad44ba69b61b0147b5 |
 | 07 | Web comparison + Candidate 4 | COMPLETED | dd49328f960d72338839d3d70350f2c89eefb7f8 |
 | 08 | Cross-platform common core + external actor interface | COMPLETED | e4063f7cf4fc8eff7b3120a2511d0a723114a849 |
-| 09 | Adversarial verification + contradiction audit | COMPLETED | this TASK 09 checkpoint commit; exact SHA persisted in Issue #2 and verified as remote HEAD |
-| 10 | Presentation proposal package + final handoff | NOT_STARTED | — |
+| 09 | Adversarial verification + contradiction audit | COMPLETED | 9a0da69e4fd031e203080d165eb65b89a9de5c22 |
+| 10 | Presentation proposal package + final handoff | COMPLETED | this TASK 10 checkpoint commit; exact SHA persisted in Issue #2 and verified as remote HEAD |
 
-## TASK 09 outputs
-- outputs/09/contradiction-audit.md
-- outputs/09/baseline-traceability.md
-- outputs/09/source-freshness-audit.md
-- outputs/09/semantic-propagation-risks.md
-- outputs/09/rework-required.md
-- outputs/09/SUPERVISOR_REVIEW_PACKET.md
+## TASK 10 outputs
+- outputs/10/android-workflow-proposal.md
+- outputs/10/ios-workflow-proposal.md
+- outputs/10/web-workflow-proposal.md
+- outputs/10/common-core-proposal.md
+- outputs/10/presentation-brief.md
+- outputs/10/final-handoff.md
 
-Verification:
-- adversarial propagation tests completed;
-- no unresolved material contradiction detected;
-- baseline blob matches pinned historical source blob;
-- no out-of-scope writes found from START through TASK 08;
-- checkpoint sequence TASK 01–08 verified;
-- source freshness rechecked for material volatile claims;
-- no blocking rework required;
-- Supervisor Review Packet produced.
+## Finalization verification before PR
+- Tasks 01–09 previously verified COMPLETED.
+- TASK 09 adversarial verification: PASS.
+- no blocking rework remains.
+- presentation claims trace to Tasks 01–09 evidence.
+- each workflow proposal explicitly says STATUS: PROPOSAL — NOT CANONICAL.
+- unresolved human decisions and external actor extension points are included.
+- writes in TASK 10 limited to authorized Workpack scope.
 
-ADVERSARIAL_VERIFICATION: PASS
-UNRESOLVED_STOP_CONDITION: NO
+## Next action
+After this checkpoint is verified at remote HEAD:
+1. verify Tasks 01–10 are COMPLETED;
+2. re-verify baseline blob SHA;
+3. compare final branch against authorized base for out-of-scope writes;
+4. open exactly one final PR to main for evaluation;
+5. persist final handoff in Issue #2;
+6. STOP.
 
-## Continuation rule
-TASK 10 may begin only after TASK 09 checkpoint commit/HEAD/Issue checkpoint are persisted and latest Issue #2 comments show no applicable REWORK/HOLD/ESCALATE.
+STATE: READY_FOR_FINAL_PR_VERIFICATION
 
 ## Global STOP
-STOP if required GitHub capability is unavailable; local Git/download would be required; out-of-scope write, authority/scope/baseline change, unauthorized credentials/billing/external account change, unresolved material contradiction, unverifiable task/checkpoint, applicable REWORK/HOLD/ESCALATE, merge or canonical adoption is required.
+No merge or canonical adoption is authorized.
