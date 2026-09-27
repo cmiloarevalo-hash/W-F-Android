@@ -56,6 +56,21 @@ TASK 02 verification:
 - baseline and read-only paths were not modified;
 - scope review limited writes to the authorized Workpack path.
 
+## Autonomy transition gate
+
+| Gate | Status |
+|---|---|
+| TASK 01 | COMPLETED |
+| TASK 02 | COMPLETED |
+| AUTONOMY_MODE acknowledgement | WAITING_FOR_ACKNOWLEDGEMENT |
+| AUTONOMY_RELEASE | NOT_ISSUED |
+
+TASK 03 MUST NOT start until:
+1. the Implementer acknowledges `AUTONOMY_MODE.md` in Issue #2 with `READY_FOR_AUTONOMY_RELEASE: YES`; and
+2. the Supervisor issues `AUTONOMY_RELEASE`.
+
+This temporary gate supersedes the earlier general START only for the transition between TASK 02 and TASK 03. It does not change authority or scope.
+
 ## Continuation rule
 After START has been issued, continue from the first task whose status is not COMPLETED.
 Never infer progress from chat memory.
