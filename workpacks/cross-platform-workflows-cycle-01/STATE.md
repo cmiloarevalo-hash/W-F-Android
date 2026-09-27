@@ -19,24 +19,22 @@
 | 04 | iOS Candidates 1–3 | COMPLETED | `db136e8cfd89c731527500e6e718b282ca90a433` |
 | 05 | iOS comparison + Candidate 4 | COMPLETED | `51b575094c59a8496fd76f98439be7692942f1bb` |
 | 06 | Web Candidates 1–3 | COMPLETED | `0e93f0507c4403f4bfd23bad44ba69b61b0147b5` |
-| 07 | Web comparison + Candidate 4 | COMPLETED | this TASK 07 checkpoint commit; exact SHA persisted in Issue #2 and verified as remote HEAD |
-| 08 | Cross-platform common core + external actor interface | NOT_STARTED | — |
+| 07 | Web comparison + Candidate 4 | COMPLETED | `dd49328f960d72338839d3d70350f2c89eefb7f8` |
+| 08 | Cross-platform common core + external actor interface | COMPLETED | this TASK 08 checkpoint commit; exact SHA persisted in Issue #2 and verified as remote HEAD |
 | 09 | Adversarial verification + contradiction audit | NOT_STARTED | — |
 | 10 | Presentation proposal package + final handoff | NOT_STARTED | — |
 
-## TASK 07 outputs
-- `outputs/07/web-comparison.md`
-- `outputs/07/web-sensitivity.md`
-- `outputs/07/web-candidate-4-presentation.md`
-- `outputs/07/SUPERVISOR_REVIEW_PACKET.md`
+## TASK 08 outputs
+- `outputs/08/common-governance-core.md`
+- `outputs/08/platform-deltas.md`
+- `outputs/08/external-actor-interface.md`
+- `outputs/08/cross-platform-evidence-map.md`
 
 Verification:
-- fixed scoring methodology applied;
-- scores clearly analytical;
-- sensitivity complete;
-- Candidate 4 rules traced to evidence/inference;
-- legacy Google/AI Studio/Firebase/npm assumptions rejected unless generically justified;
-- Supervisor Review Packet produced;
+- common core limited to shared governance/evidence concepts;
+- platform-specific build/device/browser/signing/distribution differences preserved;
+- no forced provider symmetry;
+- optional external actor contract contains all required fields;
 - writes limited to authorized Workpack scope.
 
 ## Continuation rule
