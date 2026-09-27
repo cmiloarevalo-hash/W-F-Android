@@ -23,15 +23,13 @@ TASK 01 start preconditions are satisfied:
 2. required GitHub integration/API capabilities are confirmed;
 3. Supervisor START has been issued.
 
-TASK 01 is now authorized to execute.
-
 The START signal releases execution of the sequence already authorized by Issue #2. It does not alter authority or scope.
 
 ## Task state
 
 | Task | Description | Status | Checkpoint commit |
 |---|---|---|---|
-| 01 | Research framework + invariants + scoring model | NOT_STARTED | — |
+| 01 | Research framework + invariants + scoring model | COMPLETED | this TASK 01 checkpoint commit; exact SHA persisted in Issue #2 and verified as remote HEAD |
 | 02 | Android Candidates 1–3 | NOT_STARTED | — |
 | 03 | Android comparison + Candidate 4 | NOT_STARTED | — |
 | 04 | iOS Candidates 1–3 | NOT_STARTED | — |
@@ -41,6 +39,20 @@ The START signal releases execution of the sequence already authorized by Issue 
 | 08 | Cross-platform common core + external actor interface | NOT_STARTED | — |
 | 09 | Adversarial verification + contradiction audit | NOT_STARTED | — |
 | 10 | Presentation proposal package + final handoff | NOT_STARTED | — |
+
+## TASK 01 persisted outputs
+
+- `outputs/01/research-method.md`
+- `outputs/01/source-register.md`
+- `outputs/01/invariants.md`
+- `outputs/01/scoring-model.md`
+
+Verification:
+- material current-state claims are sourced or explicitly classified;
+- empirical observations, external statistics and analytical scores are separated;
+- criteria, weights, scale and sensitivity method were fixed before candidate scoring;
+- scope review: TASK 01 writes limited to authorized Workpack paths;
+- baseline/reference sources remain read-only.
 
 ## Continuation rule
 After START has been issued, continue from the first task whose status is not COMPLETED.
