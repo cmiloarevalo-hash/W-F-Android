@@ -2,7 +2,8 @@
 
 ## Fixed context
 - Authority: Issue #2
-- Branch: `workpack/cross-platform-workflows-cycle-01`
+- Repository access: GitHub integration/API only; NO local clone/worktree
+- Remote target branch/ref: `workpack/cross-platform-workflows-cycle-01`
 - Writable scope: `workpacks/cross-platform-workflows-cycle-01/**`
 - Baseline: `references/WORKFLOW_BASE_ORIGINAL.md` — READ ONLY
 - Supervisor: Chat Web GPT
@@ -13,11 +14,13 @@
 | Gate | Status |
 |---|---|
 | TASK 00 — session bootstrap acknowledgement | WAITING_FOR_ACKNOWLEDGEMENT |
+| GitHub integration capability confirmation | NOT_VERIFIED |
 | Supervisor START release | NOT_ISSUED |
 
 TASK 01 MUST NOT start until:
-1. TASK 00 acknowledgement is persisted in Issue #2 with `READY_FOR_START: YES`; and
-2. Supervisor sends explicit START.
+1. TASK 00 acknowledgement is persisted in Issue #2 with `READY_FOR_START: YES`;
+2. required GitHub integration/API capabilities are confirmed; and
+3. Supervisor sends explicit START.
 
 The START signal releases execution of the sequence already authorized by Issue #2. It does not alter authority or scope.
 
@@ -40,8 +43,13 @@ The START signal releases execution of the sequence already authorized by Issue 
 After START has been issued, continue from the first task whose status is not COMPLETED.
 Never infer progress from chat memory.
 
+Continuity uses remote GitHub state:
+Issue #2 → remote branch/ref → remote commit history → STATE.md → current prompt → required outputs.
+
 ## Global STOP
 STOP and persist coherent state if:
+- required GitHub integration/API capability is unavailable;
+- repository access would require clone/download/local Git;
 - write outside authorized scope is required;
 - baseline/workflow source modification appears necessary;
 - authority or scope change is required;
@@ -49,5 +57,5 @@ STOP and persist coherent state if:
 - evidence contradicts a previous material assumption and cannot be resolved inside the current task;
 - a dependency/cost/credential must be adopted without prior authority;
 - current task outputs cannot be verified;
-- previous checkpoint commit/push is missing;
+- previous remote checkpoint commit/branch HEAD verification is missing;
 - Supervisor has posted HOLD/REWORK/ESCALATE on the active workpack.

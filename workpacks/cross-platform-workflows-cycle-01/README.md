@@ -5,6 +5,16 @@ Persistent authority: GitHub Issue #2.
 
 This workpack is an experimental/design package. Nothing produced here becomes a canonical workflow automatically.
 
+## Repository access
+The Implementer must use only the GitHub integration/API functions available in its environment.
+
+No local clone, repository copy/download, local checkout/worktree, `git pull`, `git fetch` or `git push`.
+
+Read:
+`REPOSITORY_ACCESS.md`
+
+The authorized branch is a remote target ref.
+
 ## Session entry
 Before TASK 01, the Implementer must execute `prompts/00-session-bootstrap.md`.
 
@@ -12,12 +22,13 @@ TASK 00 is acknowledgement-only:
 - no file writes;
 - no research;
 - no STATE change by Implementer;
-- no commit/push;
+- no commit/ref update;
 - no TASK 01.
 
 After a valid `READY_FOR_START: YES` comment in Issue #2, the Implementer waits for an explicit Supervisor START signal.
 
 ## Branch
+Remote target branch/ref:
 `workpack/cross-platform-workflows-cycle-01`
 
 ## Writable scope
@@ -42,8 +53,9 @@ Conversational memory is non-authoritative.
 Recover from:
 ```text
 Issue #2
-→ branch
-→ git log
+→ remote branch/ref
+→ remote GitHub commit history
+→ REPOSITORY_ACCESS.md
 → WORKPLAN.md
 → STATE.md
 → current prompt
@@ -60,8 +72,8 @@ After START, the Implementer may continue automatically only when the current ta
 2. verification complete;
 3. scope check complete;
 4. STATE.md updated;
-5. exactly one checkpoint commit for that task;
-6. push complete;
+5. exactly one checkpoint commit persisted on the authorized remote branch;
+6. remote branch HEAD verification complete;
 7. no STOP CONDITION.
 
 ## Candidate status
@@ -73,6 +85,7 @@ NO AUTO-ADOPTION
 NO AUTO-MERGE
 NO BASELINE MODIFICATION
 NO AUTHORITY CHANGE
+NO LOCAL REPOSITORY CLONE
 ```
 
 One final PR may be opened after TASK 10 for Supervisor evaluation.
