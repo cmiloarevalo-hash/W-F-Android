@@ -13,14 +13,17 @@
 
 | Gate | Status |
 |---|---|
-| TASK 00 — session bootstrap acknowledgement | WAITING_FOR_ACKNOWLEDGEMENT |
-| GitHub integration capability confirmation | NOT_VERIFIED |
-| Supervisor START release | NOT_ISSUED |
+| TASK 00 — session bootstrap acknowledgement | ACKNOWLEDGED |
+| GitHub integration capability confirmation | VERIFIED |
+| Supervisor START release | ISSUED |
 
-TASK 01 MUST NOT start until:
+TASK 01 start preconditions are satisfied:
+
 1. TASK 00 acknowledgement is persisted in Issue #2 with `READY_FOR_START: YES`;
-2. required GitHub integration/API capabilities are confirmed; and
-3. Supervisor sends explicit START.
+2. required GitHub integration/API capabilities are confirmed;
+3. Supervisor START has been issued.
+
+TASK 01 is now authorized to execute.
 
 The START signal releases execution of the sequence already authorized by Issue #2. It does not alter authority or scope.
 
