@@ -17,20 +17,14 @@
 | GitHub integration capability confirmation | VERIFIED |
 | Supervisor START release | ISSUED |
 
-TASK 01 start preconditions are satisfied:
-
-1. TASK 00 acknowledgement is persisted in Issue #2 with `READY_FOR_START: YES`;
-2. required GitHub integration/API capabilities are confirmed;
-3. Supervisor START has been issued.
-
 The START signal releases execution of the sequence already authorized by Issue #2. It does not alter authority or scope.
 
 ## Task state
 
 | Task | Description | Status | Checkpoint commit |
 |---|---|---|---|
-| 01 | Research framework + invariants + scoring model | COMPLETED | this TASK 01 checkpoint commit; exact SHA persisted in Issue #2 and verified as remote HEAD |
-| 02 | Android Candidates 1–3 | NOT_STARTED | — |
+| 01 | Research framework + invariants + scoring model | COMPLETED | `dfe67727fe7e41e4fb817745ef811e2f0bde2af9` |
+| 02 | Android Candidates 1–3 | COMPLETED | this TASK 02 checkpoint commit; exact SHA persisted in Issue #2 and verified as remote HEAD |
 | 03 | Android comparison + Candidate 4 | NOT_STARTED | — |
 | 04 | iOS Candidates 1–3 | NOT_STARTED | — |
 | 05 | iOS comparison + Candidate 4 | NOT_STARTED | — |
@@ -41,25 +35,33 @@ The START signal releases execution of the sequence already authorized by Issue 
 | 10 | Presentation proposal package + final handoff | NOT_STARTED | — |
 
 ## TASK 01 persisted outputs
-
 - `outputs/01/research-method.md`
 - `outputs/01/source-register.md`
 - `outputs/01/invariants.md`
 - `outputs/01/scoring-model.md`
 
-Verification:
-- material current-state claims are sourced or explicitly classified;
-- empirical observations, external statistics and analytical scores are separated;
-- criteria, weights, scale and sensitivity method were fixed before candidate scoring;
-- scope review: TASK 01 writes limited to authorized Workpack paths;
-- baseline/reference sources remain read-only.
+## TASK 02 persisted outputs
+- `outputs/02/android-evidence.md`
+- `outputs/02/android-capability-matrix.md`
+- `outputs/02/candidate-1-minimal.md`
+- `outputs/02/candidate-2-portable.md`
+- `outputs/02/candidate-3-verified.md`
+
+TASK 02 verification:
+- Android claims are sourced or explicitly marked inference/community evidence;
+- candidates are structurally distinct (minimal vs adapter/portable vs tiered verified);
+- local/cloud host build is separated from emulator/device capability;
+- signing/AAB/Google Play remain explicit release boundaries;
+- Firebase/Google Cloud are optional rather than silently mandatory;
+- baseline and read-only paths were not modified;
+- scope review limited writes to the authorized Workpack path.
 
 ## Continuation rule
 After START has been issued, continue from the first task whose status is not COMPLETED.
 Never infer progress from chat memory.
 
 Continuity uses remote GitHub state:
-Issue #2 → remote branch/ref → remote commit history → STATE.md → current prompt → required outputs.
+Issue #2 → remote branch/ref → remote GitHub commit history → STATE.md → current prompt → required outputs.
 
 ## Global STOP
 STOP and persist coherent state if:
