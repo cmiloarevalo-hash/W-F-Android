@@ -119,6 +119,24 @@ A device-lab or release operator can be attached without changing core workflow:
 - STOP CONDITIONS: billing/credential/policy changes, unsupported matrix, inconsistent artifact.
 - ESCALATION PATH: Supervisor/Human.
 
+## Baseline functional non-regression ledger
+
+Candidate 2 keeps its provider-neutral/portable design while preserving the baseline control functions independently of the selected Android CI, device-lab, or release provider.
+
+| Baseline guarantee | Status | Preserved behavior in Candidate 2 |
+|---|---|---|
+| 1. Work Item contract | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION | The provider-neutral task contract explicitly carries Objective, Acceptance Criteria, Authorized Scope, Relevant Sources, Verification, and Base. Android toolchain/device-provider inputs extend the contract without replacing its control fields. |
+| 2. Semantic Scope + Path Scope | PRESERVED AS-IS | Semantic Scope and Path Scope are separate authorization dimensions for every adapter-backed task. An adapter may operate only on behavior and repository paths both authorized by the Work Item. |
+| 3. Exact-SHA Supervisor review | PRESERVED AS-IS | The evidence bundle identifies the exact commit SHA reviewed by the Supervisor. Any new commit invalidates semantic acceptance for the new HEAD even if the same provider/adapter reruns successfully. |
+| 4. SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE | PRESERVED AS-IS | These remain the only semantic Supervisor states for workflow control. Build/test/device-provider results are evidence returned by adapters, not replacements for semantic decisions. |
+| 5. Same-objective REWORK continuity | PRESERVED AS-IS | REWORK within the same Objective continues in the same Issue, branch, and PR so provider-neutral evidence/history remains continuous. A material contract or scope change requires escalation rather than a silent adapter-level workaround. |
+| 6. Supervisor-only merge and SEMANTIC_ACCEPTED != MERGE_ELIGIBLE | PRESERVED AS-IS | The Implementer and adapters never self-merge. SEMANTIC_ACCEPTED is bound to the reviewed SHA and remains distinct from MERGE_ELIGIBLE. Where merge is authorized, the Supervisor confirms exact-SHA acceptance plus baseline integration conditions before merge. |
+| 7. PUBLISH = HUMAN ACTION | PRESERVED AS-IS | A release adapter may prepare, sign, upload, or return release evidence only within explicit technical authorization, but those capabilities do not grant publication authority. Publication remains a Human action unless explicitly changed by the Human. |
+| 8. GitHub-based session recovery | PRESERVED AS-IS | Durable GitHub state records the Work Item, branch/ref and exact HEAD, PR, adapter/environment contract, evidence, latest Supervisor decision with reviewed SHA, and unresolved decisions so a new session can continue without prior chat transcript. |
+| 9. Baseline functional non-regression gate | PRESERVED AS-IS | Provider portability is subordinate to this ledger. Any provider-neutral abstraction that drops or weakens a protected baseline function is a HARD VETO and cannot be rescued by portability, cost, automation, or weighted score. |
+
+Candidate 2 may swap providers and adapters, but the preserved workflow semantics above move with the task and remain unchanged.
+
 ## Strengths
 
 - High provider portability.

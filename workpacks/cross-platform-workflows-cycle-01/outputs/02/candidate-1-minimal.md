@@ -102,6 +102,24 @@ If device testing cannot be performed by the Implementer environment, an optiona
 - STOP CONDITIONS: unavailable device, auth/cost requirement, inconsistent artifact.
 - ESCALATION PATH: Supervisor/Human.
 
+## Baseline functional non-regression ledger
+
+This Candidate 1 remains the minimal Android workflow, but minimality does not remove baseline control functions. The following guarantees are mandatory eligibility conditions before any scoring or recommendation.
+
+| Baseline guarantee | Status | Preserved behavior in Candidate 1 |
+|---|---|---|
+| 1. Work Item contract | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION | Every Android task is governed by one Work Item that explicitly records Objective, Acceptance Criteria, Authorized Scope, Relevant Sources, Verification, and Base. Android-specific build/test details populate the contract but do not replace it. |
+| 2. Semantic Scope + Path Scope | PRESERVED AS-IS | Semantic Scope authorizes the intended behavior/change and Path Scope authorizes the files/modules. Both must pass independently; permission to edit a path never authorizes an unrelated semantic change. |
+| 3. Exact-SHA Supervisor review | PRESERVED AS-IS | Supervisor semantic review is bound to the exact reviewed commit SHA. Any new commit creates a new HEAD and requires a new semantic decision for that HEAD. |
+| 4. SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE | PRESERVED AS-IS | These remain the independent Supervisor decision states. Unit tests, lint, build, emulator/device checks, or CI success are evidence only and cannot substitute for the Supervisor decision. |
+| 5. Same-objective REWORK continuity | PRESERVED AS-IS | Corrections that keep the same Objective continue in the same Issue, branch, and PR. If Objective, Semantic Scope, Path Scope, authority, or another material contract element changes, the work escalates instead of silently stretching the existing Work Item. |
+| 6. Supervisor-only merge and SEMANTIC_ACCEPTED != MERGE_ELIGIBLE | PRESERVED AS-IS | The Implementer never self-merges. SEMANTIC_ACCEPTED applies only to the reviewed SHA and is not itself MERGE_ELIGIBLE. Where merge is authorized, the Supervisor verifies the exact accepted SHA plus the baseline integration/eligibility conditions before merging. |
+| 7. PUBLISH = HUMAN ACTION | PRESERVED AS-IS | Android build, signing, AAB generation, upload capability, Play Console access, or release automation do not create publication authority. Publication remains a Human action unless the Human explicitly changes that semantic rule. |
+| 8. GitHub-based session recovery | PRESERVED AS-IS | A new Supervisor or Implementer session reconstructs from GitHub artifacts: governing Issue/Work Item, branch/ref and exact HEAD, active PR, latest applicable Supervisor decision and reviewed SHA, checkpoint/evidence, and unresolved blockers. Prior chat transcript is not authoritative continuity. |
+| 9. Baseline functional non-regression gate | PRESERVED AS-IS | Before Candidate 1 is eligible for scoring or recommendation, this ledger must be complete and any unexplained loss, weakening, substitution, or reinterpretation of a protected baseline function is a HARD VETO that score cannot offset. |
+
+Candidate 1 preserves these controls with the smallest operational ceremony; it does not weaken them to achieve minimality.
+
 ## Strengths
 
 - Small cognitive and operational surface.

@@ -109,6 +109,24 @@ A retry never silently converts a failure into a pass; flaky behavior is recorde
 - STOP CONDITIONS: unexpected billing requirement, missing authorization, unsupported device, provider instability that invalidates evidence.
 - ESCALATION PATH: Supervisor/Human.
 
+## Baseline functional non-regression ledger
+
+Candidate 3 adds stronger verification/audit controls without replacing the baseline authority model. Its additional evidence is subordinate to the same semantic workflow guarantees.
+
+| Baseline guarantee | Status | Preserved behavior in Candidate 3 |
+|---|---|---|
+| 1. Work Item contract | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION | The durable control plane records Objective, Acceptance Criteria, Authorized Scope, Relevant Sources, Verification, and Base, plus Android environment/audit metadata. Additional audit fields strengthen evidence but do not change the contract semantics. |
+| 2. Semantic Scope + Path Scope | PRESERVED AS-IS | Every audited operation must be authorized both semantically and by path. Device, CI, release, and external-provider capabilities cannot expand either scope. |
+| 3. Exact-SHA Supervisor review | PRESERVED AS-IS | Audit evidence records the exact commit SHA submitted for Supervisor semantic review. Any later commit creates a new HEAD whose semantic acceptance must be reviewed again, regardless of identical test outcomes. |
+| 4. SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE | PRESERVED AS-IS | These remain the independent Supervisor control states. Tiered tests, provenance, CI gates, device matrices, and audit logs are evidence and cannot auto-produce or replace a semantic state. |
+| 5. Same-objective REWORK continuity | PRESERVED AS-IS | Same-objective corrections remain in the same Issue, branch, and PR, with new evidence/checkpoints appended to the audit trail. Changes to Objective, Semantic Scope, Path Scope, authority, baseline semantics, or other material contract terms require escalation. |
+| 6. Supervisor-only merge and SEMANTIC_ACCEPTED != MERGE_ELIGIBLE | PRESERVED AS-IS | The Implementer, CI, and external actors never self-merge. SEMANTIC_ACCEPTED applies only to the reviewed SHA and is distinct from MERGE_ELIGIBLE. Where integration is authorized, the Supervisor performs merge only after exact-SHA semantic acceptance and baseline merge-eligibility checks. |
+| 7. PUBLISH = HUMAN ACTION | PRESERVED AS-IS | Strong release automation, signing isolation, artifact provenance, Play upload capability, or device-lab evidence do not create publication authority. Publication remains a Human action unless the Human explicitly changes the semantic rule. |
+| 8. GitHub-based session recovery | PRESERVED AS-IS | GitHub persists Work Item, branch/ref and exact HEAD, PR, environment fingerprint, verification evidence, latest applicable Supervisor decision/reviewed SHA, retries/deviations, and unresolved risks so a new authorized session reconstructs state without prior transcript. |
+| 9. Baseline functional non-regression gate | PRESERVED AS-IS | The audit pipeline must verify this ledger before scoring/recommendation. Any unexplained functional regression is a HARD VETO; stronger automation, deeper verification, or a higher analytical score cannot compensate for it. |
+
+Candidate 3 strengthens auditability and verification depth while preserving the baseline workflow semantics and authority boundaries unchanged.
+
 ## Strengths
 
 - Highest assurance and traceability.
