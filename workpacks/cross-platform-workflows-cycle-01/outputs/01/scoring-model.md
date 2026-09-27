@@ -143,3 +143,60 @@ It must:
 - UNKNOWN/NE handling defined: YES
 - Sensitivity method defined before candidate scoring: YES
 - Candidate 4 not mechanically selected by mean: YES
+
+
+## 10. Baseline functional non-regression eligibility gate
+
+The weighted model applies **only after** the baseline functional non-regression gate in `outputs/01/invariants.md` I-21 through I-29 and `outputs/01/research-method.md` §10 passes.
+
+Before a candidate can receive an eligible comparative ranking, it MUST provide an explicit baseline-function mapping using:
+
+- `PRESERVED AS-IS`;
+- `PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION`;
+- `NOT APPLICABLE` with justification.
+
+Protected baseline functions include at minimum:
+- Work Item contract structure;
+- Semantic Scope + Path Scope;
+- exact-SHA review binding;
+- SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE;
+- same-objective REWORK continuity;
+- Supervisor-only merge under exact-SHA semantic acceptance + merge-eligibility conditions where integration is authorized;
+- `PUBLISH = HUMAN ACTION`;
+- GitHub-based session recovery.
+
+### Hard-veto rule
+
+Any unexplained baseline functional loss, weakening, substitution, or reinterpretation is a **HARD VETO**.
+
+For a hard-veto candidate:
+- do not normalize or rank it as eligible;
+- do not allow weighted score, sensitivity scenario, cost advantage, provider portability, automation depth, or test success to offset the veto;
+- report the violated baseline guarantee and required correction/escalation.
+
+A platform-specific implementation is not a regression when it preserves the same functional guarantee and makes the mechanism explicit.
+
+### Relationship to the existing score
+
+No criterion, weight, scale anchor, or sensitivity formula is changed by this correction.
+
+The evaluation order is now explicit:
+
+`BASELINE FUNCTIONAL NON-REGRESSION GATE → HARD INVARIANTS → EVIDENCE COVERAGE → WEIGHTED SCORE → SENSITIVITY → SYNTHESIS`
+
+A score is therefore conditional on eligibility; it never grants eligibility.
+
+## 11. Updated TASK 01 verification
+
+- Baseline functional non-regression gate defined: YES
+- Work Item contract protected: YES
+- Semantic Scope and Path Scope independently protected: YES
+- Exact-SHA review binding protected: YES
+- SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE protected: YES
+- Same-objective REWORK continuity protected: YES
+- Supervisor-only merge boundary protected: YES
+- PUBLISH = HUMAN ACTION protected: YES
+- GitHub session recovery protected: YES
+- Unexplained weakening is HARD VETO: YES
+- Weighted scoring cannot compensate for baseline regression: YES
+- Existing weights and scoring results changed by this TASK 01 correction: NO

@@ -124,3 +124,130 @@ Before a later task is marked complete:
 ## 9. Limitations
 
 This method does not guarantee that all future platform facts remain current. It defines how freshness, uncertainty, contradictions and scoring must be handled when those facts are gathered.
+
+
+## 10. Baseline functional non-regression method
+
+TASK 01 treats the frozen baseline as a read-only functional reference. Research may propose different platform-specific mechanisms, but candidate generation and comparison MUST preserve the baseline's proven control functions unless a Human explicitly authorizes a semantic change.
+
+### 10.1 Work Item contract gate
+
+Before technical research is treated as candidate-ready, verify that the governing Work Item supplies or explicitly resolves:
+
+1. Objective;
+2. Acceptance Criteria;
+3. Authorized Scope;
+4. Relevant Sources;
+5. Verification;
+6. Base.
+
+Authorized Scope MUST be interpreted as two independent dimensions:
+
+- Semantic Scope: what behavior/change is authorized;
+- Path Scope: where changes may be made.
+
+Path Scope alone never authorizes a semantic change.
+
+### 10.2 Baseline-preservation ledger
+
+Every later candidate review MUST include a baseline-preservation ledger with one row per protected baseline function and exactly one status:
+
+- `PRESERVED AS-IS`;
+- `PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION`;
+- `NOT APPLICABLE` + justification.
+
+Minimum protected functions are those mapped in `outputs/01/invariants.md` I-21 through I-29:
+- Work Item contract;
+- Semantic Scope + Path Scope;
+- exact-SHA semantic review;
+- SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE;
+- same-objective REWORK continuity in the same Issue/branch/PR;
+- Supervisor-only merge after exact-SHA semantic acceptance and merge-eligibility checks where merge is authorized;
+- `PUBLISH = HUMAN ACTION`;
+- GitHub-based session recovery;
+- the non-regression gate itself.
+
+A candidate may implement a function differently on Android, iOS, or Web, but the mapping must explain how the same functional guarantee is retained.
+
+### 10.3 SHA-bound review discipline
+
+Review evidence MUST record:
+- exact reviewed commit SHA;
+- applicable PR/branch;
+- Supervisor decision for that SHA.
+
+A later commit invalidates semantic acceptance for the new HEAD until the Supervisor reviews that new SHA. CI or test evidence may remain reusable as evidence when still applicable, but it does not transfer semantic acceptance.
+
+### 10.4 Review state machine
+
+The semantic state machine is independent of automated verification:
+
+`SEMANTIC_ACCEPTED | REWORK | HOLD | ESCALATE`
+
+Interpretation:
+- SEMANTIC_ACCEPTED: the exact reviewed SHA satisfies the Work Item semantically; this is not automatically merge eligibility.
+- REWORK: correct within the same objective, normally continuing in the same Issue/branch/PR.
+- HOLD: do not continue the affected work until the hold is released.
+- ESCALATE: Human/Supervisor decision is required because authority/scope/baseline/material assumptions exceed the current Work Item.
+
+### 10.5 Merge and publication boundaries
+
+Where integration is authorized by the governing Work Item/Human decision:
+- Implementer never self-merges;
+- Supervisor merge requires exact-SHA semantic acceptance plus baseline merge-eligibility checks.
+
+Publication remains a separate authority boundary:
+
+`PUBLISH = HUMAN ACTION`
+
+Technical build/sign/upload/deploy capability is evidence/capability, not publication authority.
+
+### 10.6 REWORK continuity
+
+When the objective is unchanged, corrections remain in the same Issue/branch/PR by default so that evidence and review history stay continuous.
+
+If the required correction changes Objective, Semantic Scope, Path Scope, authority, baseline semantics, provider/billing/credentials beyond existing authority, or other material contract elements, do not silently stretch the original Work Item: escalate.
+
+### 10.7 Session recovery verification
+
+At every significant handoff, verify that a new authorized Supervisor/Implementer can reconstruct from GitHub:
+- Work Item and contract;
+- branch/ref and exact HEAD;
+- PR if present;
+- current state/checkpoints;
+- latest applicable Supervisor decision + reviewed SHA;
+- evidence and unresolved blockers.
+
+The previous chat transcript is never required as authoritative continuity.
+
+### 10.8 Non-regression gate before scoring
+
+Before any numeric comparison:
+
+1. complete the baseline-preservation ledger;
+2. inspect every `PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION` explanation;
+3. inspect every `NOT APPLICABLE` justification;
+4. flag any unexplained weakening as HARD VETO;
+5. only candidates that pass the gate may proceed to weighted scoring.
+
+This gate is logically prior to scoring. It is not another weighted criterion.
+
+## 11. TASK 01 non-regression verification
+
+Baseline correspondence checked against the frozen reference:
+- Work Item contract → I-21;
+- dual Semantic/Path Scope → I-22;
+- exact-SHA review → I-23;
+- review state machine → I-24;
+- REWORK continuity → I-25;
+- merge authority/eligibility → I-26;
+- human publication authority → I-27;
+- GitHub session recovery → I-28;
+- functional non-regression gate → I-29.
+
+Verification result for this methodology correction:
+- baseline functionality removed: NO;
+- baseline functionality reinterpreted into weaker authority: NO;
+- platform-specific implementation allowed only where the function remains equivalent: YES;
+- frozen baseline modified: NO;
+- TASK 01 remains methodology/evaluation only: YES.
