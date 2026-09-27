@@ -203,3 +203,32 @@ STATE: READY_FOR_SUPERVISOR_REVIEW | BLOCKED
 ```
 
 El agente deja el resultado en GitHub y devuelve control al Supervisor.
+
+
+## Baseline protection
+
+Before working on any platform Work Item, read:
+
+- `references/README.md`
+- `references/WORKFLOW_BASE_ORIGINAL.md` only when baseline comparison is required.
+
+The baseline is frozen reference material.
+
+```text
+BASELINE_REFERENCE = references/WORKFLOW_BASE_ORIGINAL.md
+BASELINE_WRITES = FORBIDDEN
+REFERENCES_WRITES = FORBIDDEN
+SOURCE_REPOSITORY_WRITES = FORBIDDEN
+```
+
+The Implementer may analyze, quote, classify and compare the baseline, but may not edit it or treat candidate proposals as amendments to it.
+
+All new workflow proposals must live outside `references/**` and must be clearly labeled `CANDIDATE`, `PROPOSAL` or `DRAFT` until Supervisor review.
+
+If any instruction appears to require modifying the baseline:
+
+```text
+STOP
+→ BLOCKED/ESCALATE
+→ Supervisor
+```
