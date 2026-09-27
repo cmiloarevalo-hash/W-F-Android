@@ -62,14 +62,17 @@ TASK 02 verification:
 |---|---|
 | TASK 01 | COMPLETED |
 | TASK 02 | COMPLETED |
-| AUTONOMY_MODE acknowledgement | WAITING_FOR_ACKNOWLEDGEMENT |
-| AUTONOMY_RELEASE | NOT_ISSUED |
+| AUTONOMY_MODE acknowledgement | ACKNOWLEDGED |
+| AUTONOMY_RELEASE | ISSUED |
 
-TASK 03 MUST NOT start until:
-1. the Implementer acknowledges `AUTONOMY_MODE.md` in Issue #2 with `READY_FOR_AUTONOMY_RELEASE: YES`; and
-2. the Supervisor issues `AUTONOMY_RELEASE`.
+TASK 03 autonomy preconditions are satisfied:
 
-This temporary gate supersedes the earlier general START only for the transition between TASK 02 and TASK 03. It does not change authority or scope.
+1. the Implementer acknowledged `AUTONOMY_MODE.md` in Issue #2 with `READY_FOR_AUTONOMY_RELEASE: YES`;
+2. the Supervisor has issued `AUTONOMY_RELEASE`.
+
+TASK 03 through TASK 10 are released for unattended sequential execution subject to all persisted STOP conditions and Issue #2 checks.
+
+This release does not change authority or scope.
 
 ## Continuation rule
 After START has been issued, continue from the first task whose status is not COMPLETED.
