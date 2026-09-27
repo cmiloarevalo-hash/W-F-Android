@@ -26,6 +26,24 @@ AUTHORIZED TASK
 → RELEASE ADAPTER only if separately authorized
 ```
 
+## Baseline functional non-regression ledger
+
+Candidate 4 is a synthesis proposal, not an exception to the accepted Workflow baseline. The following ledger is an eligibility condition independent of analytical score.
+
+| Protected baseline guarantee | Status | Preserved behavior in Candidate 4 |
+|---|---|---|
+| 1. Work Item contract | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION | Every iOS Work Item retains Objective, Acceptance Criteria, Authorized Scope, Relevant Sources, Verification, and Base. Xcode/macOS, scheme, simulator/device, signing and release details populate the contract without replacing it. |
+| 2. Semantic Scope + Path Scope | PRESERVED AS-IS | Semantic Scope authorizes intended behavior/change and Path Scope authorizes files/modules. Both constraints apply independently across portable, Mac build, test and release lanes; path permission never authorizes unrelated semantic change. |
+| 3. Exact-SHA Supervisor review | PRESERVED AS-IS | Supervisor semantic review applies only to the exact reviewed commit SHA. Any later commit creates a new HEAD and requires a new semantic decision; repeated CI/Xcode results cannot carry acceptance forward automatically. |
+| 4. SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE | PRESERVED AS-IS | These remain the independent Supervisor decision states. Swift tests, xcodebuild, simulator/device checks, .xcresult, CI and analytical scores are evidence only and cannot replace the semantic state machine. |
+| 5. Same-objective REWORK continuity | PRESERVED AS-IS | Corrections that keep the same Objective continue in the same Issue, branch and PR. Changes to Objective, Semantic Scope, Path Scope, authority, baseline semantics or other material contract terms require escalation instead of silent expansion. |
+| 6. Supervisor-only merge; SEMANTIC_ACCEPTED != MERGE_ELIGIBLE | PRESERVED AS-IS | The Implementer, CI and optional external actors never self-merge. SEMANTIC_ACCEPTED is exact-SHA and distinct from MERGE_ELIGIBLE. Where integration is authorized, the Supervisor merges only after exact-SHA semantic acceptance plus baseline merge-eligibility checks. |
+| 7. PUBLISH = HUMAN ACTION | PRESERVED AS-IS | Archive/export, signing, TestFlight upload, App Store Connect access or release automation do not create publication authority. **PUBLISH = HUMAN ACTION** unless explicitly changed by the Human. |
+| 8. GitHub-based session recovery | PRESERVED AS-IS | A new authorized session reconstructs from GitHub the governing Work Item/Issue, branch/ref and exact HEAD, active PR, environment contract, latest applicable Supervisor decision and reviewed SHA, verification/checkpoint evidence, release constraints and unresolved blockers. Prior chat transcript is not authoritative continuity. |
+| 9. Baseline functional non-regression gate | PRESERVED AS-IS | Candidate 4 remains eligible only if every protected baseline function is preserved or explicitly justified. Any unexplained loss, weakening, substitution or reinterpretation is a **HARD VETO** that analytical score, sensitivity, portability, automation, CI/test success or cost cannot offset. |
+
+The ledger preserves iOS platform semantics: native app build/simulator/archive/signing remain macOS/Xcode-bound where required; Linux remains limited to compatible non-iOS Swift/package/domain work; simulator and physical-device evidence remain distinct; signing/provisioning remain protected; TestFlight/App Store remain separately authorized; Xcode Cloud remains optional; Apple-required coupling remains distinct from avoidable provider coupling.
+
 ## Environment contract
 Persist:
 - Xcode/macOS compatibility;

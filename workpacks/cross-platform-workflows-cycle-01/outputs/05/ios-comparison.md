@@ -4,6 +4,30 @@ Status: EXPERIMENTAL ANALYTICAL COMPARISON — NOT CANONICAL
 
 All values below are ANALYTICAL_SCORE under TASK 01. No empirical benchmark or external statistic is embedded in the totals.
 
+## Baseline Functional Non-Regression Eligibility Gate
+
+Accepted evaluation order:
+
+```text
+BASELINE FUNCTIONAL NON-REGRESSION GATE
+→ HARD INVARIANTS
+→ EVIDENCE COVERAGE
+→ WEIGHTED SCORE
+→ SENSITIVITY
+→ SYNTHESIS
+```
+
+Weighted scoring is conditional on eligibility. Scoring does not establish eligibility, and any unexplained baseline functional regression is a **HARD VETO** that cannot be compensated by weighted score, sensitivity, automation, CI/test success, portability or cost.
+
+The accepted TASK 04 ledgers at `1e594bfce5abbd9c2b13933aa13aa293b66a19d8` explicitly preserve all nine protected baseline guarantees for Candidates 1–3.
+
+Eligibility results:
+- **Candidate 1 eligibility gate: PASS**
+- **Candidate 2 eligibility gate: PASS**
+- **Candidate 3 eligibility gate: PASS**
+
+TASK 04's governance-ledger correction did not change the iOS candidates' technical execution models, evidence, strengths/weaknesses, criteria, weights or score inputs. The base analytical scores therefore remain unchanged.
+
 | ID | Criterion | Weight | C1 Minimal | C2 Portable | C3 Verified |
 |---|---|---:|---:|---:|---:|
 | C01 | Official platform guidance adherence | 9 | 4 | 4 | 5 |

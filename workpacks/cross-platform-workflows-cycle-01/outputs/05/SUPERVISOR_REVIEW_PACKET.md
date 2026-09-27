@@ -2,6 +2,33 @@
 
 STATUS: READY_FOR INDEPENDENT SUPERVISOR REVIEW
 
+## Baseline gate and sensitivity reproducibility
+
+TASK 05 now explicitly preserves the accepted evaluation order:
+
+```text
+BASELINE FUNCTIONAL NON-REGRESSION GATE
+→ HARD INVARIANTS
+→ EVIDENCE COVERAGE
+→ WEIGHTED SCORE
+→ SENSITIVITY
+→ SYNTHESIS
+```
+
+Candidates 1–3 are eligible through their accepted TASK 04 ledgers before scoring. Candidate 4 now contains a complete nine-row baseline functional non-regression ledger.
+
+Base analytical scores remain unchanged:
+- Minimal: 71.8
+- Portable: 84.2
+- Verified: 89.2
+
+Sensitivity evidence is now reproducible:
+- S2 persists the exact scenario multipliers, raw weights and normalization rule for weights summing exactly to 100;
+- S3 persists explicit candidate/criterion ±1 perturbations and resulting analytical totals;
+- S1 and S4 conclusions remain unchanged.
+
+No base-score input contradiction was found. This correction changes eligibility and sensitivity traceability, not the fixed TASK 01 criteria/weights or iOS technical conclusions.
+
 ## Material assumptions
 - native iOS app build/test remains a macOS/Xcode capability boundary;
 - provider neutrality is meaningful around, not through, that Apple-required boundary;
