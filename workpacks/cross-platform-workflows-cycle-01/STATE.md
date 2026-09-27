@@ -8,6 +8,19 @@
 - Supervisor: Chat Web GPT
 - Implementer: execution/research agent
 
+## Session entry gate
+
+| Gate | Status |
+|---|---|
+| TASK 00 — session bootstrap acknowledgement | WAITING_FOR_ACKNOWLEDGEMENT |
+| Supervisor START release | NOT_ISSUED |
+
+TASK 01 MUST NOT start until:
+1. TASK 00 acknowledgement is persisted in Issue #2 with `READY_FOR_START: YES`; and
+2. Supervisor sends explicit START.
+
+The START signal releases execution of the sequence already authorized by Issue #2. It does not alter authority or scope.
+
 ## Task state
 
 | Task | Description | Status | Checkpoint commit |
@@ -24,13 +37,14 @@
 | 10 | Presentation proposal package + final handoff | NOT_STARTED | — |
 
 ## Continuation rule
-Continue from the first task whose status is not COMPLETED.
+After START has been issued, continue from the first task whose status is not COMPLETED.
 Never infer progress from chat memory.
 
 ## Global STOP
 STOP and persist coherent state if:
 - write outside authorized scope is required;
 - baseline/workflow source modification appears necessary;
+- authority or scope change is required;
 - product/human decision is required;
 - evidence contradicts a previous material assumption and cannot be resolved inside the current task;
 - a dependency/cost/credential must be adopted without prior authority;
