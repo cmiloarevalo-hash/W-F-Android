@@ -4,6 +4,39 @@ STATUS: READY_FOR INDEPENDENT SUPERVISOR REVIEW
 Proposal: `outputs/03/android-candidate-4-presentation.md`  
 This packet is not self-approval.
 
+## Baseline functional non-regression gate evidence
+
+The accepted evaluation order for TASK 03 is:
+
+```text
+BASELINE FUNCTIONAL NON-REGRESSION GATE
+→ HARD INVARIANTS
+→ EVIDENCE COVERAGE
+→ WEIGHTED SCORE
+→ SENSITIVITY
+→ SYNTHESIS
+```
+
+Candidates 1–3 passed the baseline functional non-regression gate using their accepted TASK 02 ledgers before weighted scoring:
+- Candidate 1: PASS.
+- Candidate 2: PASS.
+- Candidate 3: PASS.
+
+Candidate 4 now contains its own complete nine-row `Baseline functional non-regression ledger`, covering:
+- Work Item contract;
+- Semantic Scope + Path Scope;
+- exact-SHA Supervisor semantic review;
+- SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE;
+- same-objective REWORK continuity;
+- Supervisor-only merge and SEMANTIC_ACCEPTED != MERGE_ELIGIBLE;
+- PUBLISH = HUMAN ACTION;
+- GitHub-based session recovery;
+- baseline functional non-regression gate / HARD VETO.
+
+No baseline functional regression was identified by this correction. Existing analytical scores remain **73.8 / 85.8 / 90.0** and the sensitivity analysis remains unchanged. The correction changes eligibility traceability, not Android technical conclusions or scoring inputs.
+
+HUMAN ACTION REQUIRED FOR THIS CORRECTION: NO.
+
 ## 1. Material assumptions
 
 1. Most Android changes can be meaningfully separated into host-verifiable work and device-dependent work.

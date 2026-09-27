@@ -42,6 +42,24 @@ Rules:
 
 Trace: Workpack invariants I-01..I-07, I-13..I-14; OpenAI source register OAI-01, OAI-02, OAI-04, OAI-05.
 
+## Baseline functional non-regression ledger
+
+Candidate 4 is a synthesis proposal, but synthesis cannot weaken the accepted Workflow baseline. The following ledger is an eligibility condition independent of technical scoring.
+
+| Protected baseline guarantee | Status | Preserved behavior in Candidate 4 |
+|---|---|---|
+| 1. Work Item contract | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION | Every Android Work Item preserves the full contract: Objective, Acceptance Criteria, Authorized Scope, Relevant Sources, Verification, and Base. Android toolchain, device and release details populate those fields but do not replace or weaken the contract. |
+| 2. Semantic Scope + Path Scope | PRESERVED AS-IS | Semantic Scope authorizes the intended behavior/change and Path Scope authorizes files/modules. Both constraints must pass independently; permission to edit an Android path never authorizes an unrelated semantic change. |
+| 3. Exact-SHA Supervisor semantic review | PRESERVED AS-IS | Supervisor semantic review is valid only for the exact reviewed commit SHA. Any later commit creates a new HEAD and requires a new semantic decision for that HEAD; test or CI reuse cannot carry semantic acceptance forward automatically. |
+| 4. SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE | PRESERVED AS-IS | These remain the independent Supervisor decision states. Host tests, lint, build, device tests, CI, risk classification, evidence bundles and analytical scores are evidence only and cannot substitute for the semantic state machine. |
+| 5. Same-objective REWORK continuity | PRESERVED AS-IS | When Objective and authorized contract remain unchanged, REWORK continues in the same Issue, branch and PR. A change to Objective, Semantic Scope, Path Scope, authority, baseline semantics or other material contract terms requires escalation rather than silent scope expansion. |
+| 6. Supervisor-only merge; SEMANTIC_ACCEPTED != MERGE_ELIGIBLE | PRESERVED AS-IS | The Implementer, CI and external actors never self-merge. SEMANTIC_ACCEPTED applies only to the exact reviewed SHA and is not itself MERGE_ELIGIBLE. Where integration is authorized, the Supervisor performs merge only after exact-SHA semantic acceptance and the baseline merge-eligibility checks. |
+| 7. PUBLISH = HUMAN ACTION | PRESERVED AS-IS | Android build, signing, AAB generation, Play upload capability, release automation or store credentials do not create publication authority. **PUBLISH = HUMAN ACTION** unless a Human explicitly changes that semantic rule. |
+| 8. GitHub-based session recovery | PRESERVED AS-IS | A new authorized session reconstructs from GitHub the governing Work Item/Issue, branch/ref and exact HEAD, active PR, relevant repository instructions, environment contract, latest applicable Supervisor decision and reviewed SHA, last verified evidence/checkpoints, and unresolved blockers. Prior chat transcript is not authoritative continuity. |
+| 9. Baseline functional non-regression gate | PRESERVED AS-IS | Before Candidate 4 can be considered eligible for adoption/evaluation, every protected baseline function must be explicitly preserved or justified. Any unexplained loss, weakening, substitution or reinterpretation is a **HARD VETO** and cannot be offset by analytical score, sensitivity, portability, automation, CI/test success or cost. |
+
+This ledger preserves the baseline Workflow semantics while allowing Android-specific implementation in the host/device/release layers. It does not make Candidate 4 canonical and does not create merge or publication authority.
+
 ## Environment contract
 
 A project adopting this proposal records:

@@ -4,14 +4,50 @@ Status: EXPERIMENTAL ANALYTICAL COMPARISON — NOT CANONICAL
 Method: `outputs/01/scoring-model.md`  
 Evidence: `outputs/02/android-evidence.md`
 
-## 1. Eligibility and evidence coverage
+## 1. Baseline Functional Non-Regression Eligibility Gate
 
-All three candidates satisfy the Workpack hard-veto invariants as written. No candidate proposes self-approval, baseline mutation, scope expansion or automatic canonical adoption.
+Accepted evaluation order:
+
+```text
+BASELINE FUNCTIONAL NON-REGRESSION GATE
+→ HARD INVARIANTS
+→ EVIDENCE COVERAGE
+→ WEIGHTED SCORE
+→ SENSITIVITY
+→ SYNTHESIS
+```
+
+Weighted scoring is conditional on eligibility. Scoring does not establish eligibility, and any unexplained baseline functional regression is a **HARD VETO** that cannot be compensated by weighted score, sensitivity, automation, CI/test success, cost, portability or provider independence.
+
+The accepted TASK 02 ledgers at `e57b4aa6cbca215fc162ae4a0d7aa8800e706dd5` explicitly preserve all nine protected baseline guarantees for Candidates 1–3:
+
+| Protected baseline guarantee | C1 Minimal | C2 Portable | C3 Verified |
+|---|---|---|---|
+| 1. Work Item contract | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION | PRESERVED WITH PLATFORM-SPECIFIC IMPLEMENTATION |
+| 2. Semantic Scope + Path Scope | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+| 3. Exact-SHA Supervisor semantic review | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+| 4. SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+| 5. Same-objective REWORK continuity in same Issue/branch/PR | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+| 6. Supervisor-only merge; SEMANTIC_ACCEPTED != MERGE_ELIGIBLE | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+| 7. PUBLISH = HUMAN ACTION | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+| 8. GitHub-based session recovery | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+| 9. Baseline functional non-regression gate | PRESERVED AS-IS | PRESERVED AS-IS | PRESERVED AS-IS |
+
+Eligibility results:
+- **Candidate 1 eligibility gate: PASS**
+- **Candidate 2 eligibility gate: PASS**
+- **Candidate 3 eligibility gate: PASS**
+
+No candidate is scored as eligible merely because it has a high analytical total. The accepted TASK 02 correction added explicit governance-preservation evidence without changing the candidates' Android execution models, technical evidence, strengths/weaknesses, criteria, weights or score inputs.
+
+## 2. Hard invariants and evidence coverage
+
+All three eligible candidates satisfy the Workpack hard-veto invariants as written. No candidate proposes self-approval, baseline mutation, scope expansion or automatic canonical adoption.
 
 EvidenceCoverage: **100/100** for all candidates for this design-stage comparison.  
 Important: the values below are **ANALYTICAL_SCORE**, not measurements or external statistics.
 
-## 2. Weighted score table
+## 3. Weighted score table
 
 | ID | Criterion | Weight | C1 Minimal | C2 Portable | C3 Verified |
 |---|---|---:|---:|---:|---:|
@@ -34,7 +70,7 @@ Important: the values below are **ANALYTICAL_SCORE**, not measurements or extern
 | C17 | Vendor lock-in risk | 4 | 4 | 5 | 4 |
 |  | **Weighted total / 100** | **100** | **73.8** | **85.8** | **90.0** |
 
-## 3. Score rationale
+## 4. Score rationale
 
 ### C01 — Official platform guidance
 - C1=4: uses Kotlin/Compose-aware architecture, Gradle tasks, lint and targeted device tests but leaves more verification selection to operator judgment.
@@ -123,7 +159,7 @@ Evidence: TASK 01 source register OAI-01..OAI-09.
 - C2=5: highest explicit portability and provider substitution.
 - C3=4: optional Test Lab/cloud path remains replaceable but richer provider integrations can create switching cost.
 
-## 4. Interpretation
+## 5. Interpretation
 
 Candidate 3 has the highest baseline analytical total, but Candidate 2 is close and stronger on portability/cost containment. Candidate 1's main contribution is not its aggregate score; it demonstrates that the common loop can remain materially simpler when risk does not justify device matrices or richer audit infrastructure.
 
@@ -132,7 +168,7 @@ Therefore Candidate 4 is synthesized rather than selected:
 - use Candidate 3's tiered verification, security boundary and audit rules;
 - preserve Candidate 1's default of the smallest verification set that proves the change.
 
-## 5. Quantitative discipline
+## 6. Quantitative discipline
 
 No empirical benchmark was run for Candidates 1–3.  
 No external statistic was used in the weighted totals.  
