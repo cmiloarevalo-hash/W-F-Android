@@ -2,6 +2,35 @@
 
 STATUS: READY_FOR INDEPENDENT SUPERVISOR REVIEW
 
+## TASK 07 REWORK evidence
+
+The accepted evaluation order is now explicit before scoring:
+
+```text
+BASELINE FUNCTIONAL NON-REGRESSION GATE
+→ HARD INVARIANTS
+→ EVIDENCE COVERAGE
+→ WEIGHTED SCORE
+→ SENSITIVITY
+→ SYNTHESIS
+```
+
+Candidates 1–3 are explicitly eligible via their accepted TASK 06 ledgers at `8d7038cf774db3aada3d48270b6d0077ef84e88d`.
+
+Candidate 4 now contains the complete nine-row baseline functional non-regression ledger.
+
+Base ANALYTICAL_SCORE values remain unchanged:
+- Minimal: 74.6
+- Portable: 85.8
+- Verified: 90.0
+
+Sensitivity reproducibility is explicit:
+- S2 persists scenario multipliers, raw weights, normalization rule and reproduced totals;
+- S3 persists exact candidate/criterion perturbations, deltas and resulting totals;
+- S1 and S4 remain intact.
+
+The external-actor activity rule from Issue #2 comment 5879863384 is not incorporated into TASK 07; it remains governance input for TASK 08 Common Core.
+
 ## Material assumptions
 - governance can remain framework/provider-neutral;
 - project-native commands are sufficient as the build/test adapter;
@@ -34,7 +63,10 @@ The frozen baseline contains project-specific Google AI Studio/Firebase/npm/Web 
 7. Copying baseline AI_STUDIO_OPERATOR into cross-platform common core.
 
 ## Sensitivity
-74.6 / 85.8 / 90.0; simplicity/cost reduces C3-vs-C2 margin to 1.87.
-Stability: CONDITIONALLY_STABLE.
+Base: 74.6 / 85.8 / 90.0.
+S2 results reproduce from persisted exact scenario definitions.
+S3 Stress A: 74.6 / 87.8 / 88.0.
+S3 Stress B: 74.6 / 88.6 / 87.2.
+Stability: CONDITIONALLY_STABLE; synthesis remains the conclusion rather than mechanical adoption of a score winner.
 
 Allowed Supervisor outcomes: PASS | REWORK | HOLD | ESCALATE.

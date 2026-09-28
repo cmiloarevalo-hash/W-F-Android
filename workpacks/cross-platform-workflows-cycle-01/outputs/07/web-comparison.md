@@ -4,6 +4,30 @@ Status: EXPERIMENTAL ANALYTICAL COMPARISON — NOT CANONICAL
 
 All values are ANALYTICAL_SCORE under TASK 01.
 
+## Baseline Functional Non-Regression Eligibility Gate
+
+Accepted evaluation order:
+
+```text
+BASELINE FUNCTIONAL NON-REGRESSION GATE
+→ HARD INVARIANTS
+→ EVIDENCE COVERAGE
+→ WEIGHTED SCORE
+→ SENSITIVITY
+→ SYNTHESIS
+```
+
+Weighted scoring is conditional on eligibility. Scoring does not create eligibility, and any unexplained baseline functional regression is a **HARD VETO** that cannot be offset by score, sensitivity, automation, portability, cost or test success.
+
+The accepted TASK 06 ledgers at `8d7038cf774db3aada3d48270b6d0077ef84e88d` explicitly preserve all nine protected baseline guarantees for Candidates 1–3.
+
+Eligibility results:
+- **Candidate 1 eligibility gate: PASS**
+- **Candidate 2 eligibility gate: PASS**
+- **Candidate 3 eligibility gate: PASS**
+
+TASK 06's governance-ledger correction did not change Web technical execution models, evidence, strengths/weaknesses, criteria, weights or score inputs. Base analytical scores therefore remain unchanged.
+
 | ID | Criterion | Weight | C1 Minimal | C2 Portable | C3 Verified |
 |---|---|---:|---:|---:|---:|
 | C01 | Official platform guidance adherence | 9 | 4 | 4 | 5 |
