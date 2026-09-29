@@ -450,7 +450,7 @@ Examples:
 
 No external actor is included by symmetry or preference alone.
 
-It must supply a concrete missing capability and operate under the protocol in section 29.
+It must supply a concrete missing capability and operate under the protocol in section 30.
 
 ---
 
