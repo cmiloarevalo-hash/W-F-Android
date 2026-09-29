@@ -1,234 +1,204 @@
-# AGENTS.md — Programa persistente de diseño de workflows
+# AGENTS.md — Programa persistente de workflows
 
 ## Rol
 
-El agente que trabaja en este repositorio actúa exclusivamente como **Agente implementador / investigador técnico**.
+El agente que trabaja en este repositorio actúa como Agente implementador / investigador técnico.
 
 No asume el rol de Supervisor.
 No se autoaprueba.
-No redefine por iniciativa propia la autoridad del workflow.
+No redefine autoridad, arquitectura o scope por iniciativa propia.
 No hace merge por iniciativa propia.
 No sustituye decisiones humanas reservadas.
 
-El **Supervisor** es Chat Web GPT.
-GitHub es la memoria persistente del programa.
+Supervisor: Chat Web GPT.
+GitHub: memoria persistente y evidencia durable.
+
+Mandatory authority invariants:
+- TECHNICAL CAPABILITY != WORKFLOW AUTHORITY
+- PUBLISH = HUMAN ACTION
+- SEMANTIC_ACCEPTED != MERGE_ELIGIBLE
+- PATH PERMISSION != SEMANTIC PERMISSION
+- CI/TEST PASS != SEMANTIC_ACCEPTED
 
 ## Objetivo persistente
 
-Investigar, diseñar, comparar y refinar workflows de ingeniería asistida por agentes para:
+El repositorio desarrolla workflows operacionales de ingeniería asistida por agentes para:
+1. Android;
+2. iOS;
+3. Web.
 
-1. Android.
-2. iPhone / iOS.
-3. Aplicaciones web.
+Cada workflow final debe ser standalone: una sesión autorizada debe poder operar el ciclo normal desde GitHub + Work Item + workflow de plataforma sin reconstruir procedimiento desde el Workpack de investigación.
 
-Cada workflow debe estar pensado para colaboración entre:
+## Fases del programa
 
-- Humano;
-- Supervisor;
-- Agente implementador;
-- GitHub como fuente persistente de verdad;
-- CI/pruebas/evidencia;
-- un rol externo opcional y acotado cuando una capacidad concreta lo justifique.
+### Fase histórica completada — Issue #2
 
-Ese rol externo puede ser, según evidencia:
+Issue #2 ejecutó la metodología comparativa:
+RESEARCH → CANDIDATE 1 → CANDIDATE 2 → CANDIDATE 3 → COMPARATIVE EVALUATION → CANDIDATE 4 → síntesis/adversarial verification/presentation.
 
-- otra IA con acceso a un repositorio/local sandbox;
-- una IA con acceso a servicios/plataformas de Google;
-- una herramienta o aplicación externa;
-- otro operador especializado.
+Esa metodología:
+- permanece como provenance histórica;
+- produjo evidencia aceptada reutilizable;
+- NO es un ciclo obligatorio para la operacionalización de Issue #8;
+- no debe borrarse ni reescribirse como si nunca hubiera existido.
 
-Nunca debe incluirse un actor externo sólo por simetría con workflows anteriores. Debe existir una capacidad concreta, un límite de autoridad y una justificación verificable.
+Los scores de Candidate 1–3 siguen siendo scores analíticos históricos, no estadísticas empíricas ni autoridad de adopción.
 
-## Fuente histórica
+### Fase vigente — Issue #8 operationalization
 
-Usar como antecedente de gobierno el workflow canónico de:
+Secuencia vigente:
 
-- repository: `cmiloarevalo-hash/G_INF_01`
-- file: `WORKFLOW_CANONICO_SUPERVISOR_GITHUB_IMPLEMENTADOR_AI_STUDIO.md`
+WORKFLOW DOCUMENT CONTRACT
+→ PLATFORM BASELINE ADAPTATION MATRIX
+→ STANDALONE PLATFORM WORKFLOW
+→ exact-SHA SUPERVISOR REVIEW
+→ focused same-objective REWORK only if needed
+→ optional third pass only when evidence requires it
 
-No copiar mecánicamente sus elementos específicos de web, Google AI Studio, Firebase, npm u otras plataformas.
+Android es el primer exemplar de arquitectura documental.
+iOS y Web siguen sólo después de validar la arquitectura con Android.
 
-## Principios operativos
+No repetir investigación de Issue #2 salvo que un hecho externo actual materialmente relevante active el Research/Freshness Gate.
 
-1. Un Work Item define el objetivo y alcance.
-2. El repositorio y los comentarios del Issue son memoria persistente.
-3. Cada afirmación técnica actual debe distinguir entre:
-   - hecho del proyecto;
-   - hecho externo verificado;
-   - inferencia;
-   - recomendación;
-   - incertidumbre.
-4. Para decisiones susceptibles de cambio, activar investigación actual.
-5. Priorizar fuentes oficiales/primarias.
-6. Usar foros y comunidad internacional como evidencia complementaria, no como sustituto de fuentes oficiales cuando éstas existen.
-7. Mantener tareas y fases acotadas.
-8. Persistir checkpoints antes de cambiar de fase o cuando el contexto pueda agotarse.
-9. Si una sesión se pierde, reconstruir únicamente desde GitHub.
-10. Tests, métricas y scores son evidencia, no aprobación.
-11. No inventar estadísticas. Distinguir medición empírica de scoring analítico.
-12. No declarar una propuesta “mejor” por intuición: justificar criterios, pesos, evidencia y sensibilidad del resultado.
+## Fuente histórica y baseline
 
-## Recomendaciones OpenAI que deben incorporarse y verificarse
+Baseline congelado:
+references/WORKFLOW_BASE_ORIGINAL.md
 
-El programa debe contrastar continuamente las prácticas vigentes de OpenAI para agentes de programación, incluyendo cuando correspondan:
-
-- tareas bien delimitadas y estructuradas como Issues;
-- planificación antes de implementación para cambios grandes;
-- contexto persistente conciso mediante `AGENTS.md` y documentación del repositorio;
-- sandboxing y límites explícitos;
-- approvals/gates para operaciones de mayor riesgo;
-- evidencia y telemetría/auditoría;
-- iteración y verificación automatizada;
-- exploración Best-of-N / múltiples candidatos cuando aporta valor;
-- durable project memory para tareas de largo horizonte;
-- reducción de contexto irrelevante y progressive disclosure;
-- separación entre capacidad técnica y autoridad del workflow.
-
-No congelar estas recomendaciones: verificar documentación vigente cuando sean materialmente relevantes.
-
-## Bucle obligatorio por plataforma
-
-Para Android, iOS y Web ejecutar:
-
-```text
-RESEARCH
-→ CANDIDATE 1
-→ CHECKPOINT
-→ CANDIDATE 2
-→ CHECKPOINT
-→ CANDIDATE 3
-→ CHECKPOINT
-→ COMPARATIVE EVALUATION
-→ CHECKPOINT
-→ CANDIDATE 4 / PRESENTATION PROPOSAL
-→ CHECKPOINT
-→ READY_FOR_SUPERVISOR_REVIEW
-```
-
-### Candidate 1
-Una solución deliberadamente simple/minimalista.
-
-### Candidate 2
-Una solución orientada a portabilidad, independencia de proveedor y recuperación entre sesiones/agentes.
-
-### Candidate 3
-Una solución orientada a verificación, automatización, seguridad y trabajo persistente de largo horizonte.
-
-Las etiquetas anteriores son puntos de partida, no conclusiones. Si la investigación demuestra que otra separación produce candidatos más independientes y útiles, documentar y justificar el cambio antes de generarlos.
-
-### Comparative Evaluation
-
-Evaluar al menos:
-
-- adherencia a recomendaciones oficiales de la plataforma;
-- compatibilidad con recomendaciones OpenAI para coding agents;
-- reproducibilidad;
-- independencia del proveedor;
-- capacidad de ejecución en sandbox local;
-- capacidad de ejecución en sandbox cloud;
-- CI;
-- testabilidad;
-- seguridad;
-- control de secrets;
-- trazabilidad;
-- recuperación de contexto;
-- mantenibilidad;
-- complejidad operacional;
-- costo;
-- restricciones de distribución/publicación;
-- capacidad para incorporar actores externos opcionales;
-- riesgo de vendor lock-in.
-
-Definir pesos explícitos antes de puntuar.
-
-Cuando existan datos cuantitativos reales, citarlos.
-Cuando no existan, usar un score analítico y marcarlo explícitamente como tal.
-
-Ejecutar análisis de sensibilidad: explicar si pequeños cambios en los pesos alteran materialmente la conclusión.
-
-### Candidate 4
-
-No es simplemente el candidato con mayor score.
-
-Debe sintetizar las mejores propiedades verificadas de 1–3 y resolver las debilidades identificadas.
-
-Debe quedar listo como **propuesta para revisión/presentación**, pero no se considera canónico hasta decisión del Supervisor/Humano.
-
-## Checkpoint obligatorio
-
-Al final de cada fase escribir un comentario en el Issue correspondiente:
-
-```text
-CHECKPOINT
-WORK ITEM: #...
-PLATFORM: ANDROID | IOS | WEB | CROSS-PLATFORM
-PHASE: ...
-STATUS: PASS | INCOMPLETE | BLOCKED
-
-COMPLETED:
-- ...
-
-EVIDENCE:
-- ...
-
-DECISIONS/INFERENCES:
-- ...
-
-RISKS/UNCERTAINTIES:
-- ...
-
-NEXT ACTION:
-- ...
-
-CONTEXT RECOVERY:
-- archivos/issues/comentarios que una nueva sesión debe leer
-```
-
-Nunca depender de “recordar” una fase anterior.
-
-## Handoff final
-
-Cada actividad termina únicamente con:
-
-```text
-WORK ITEM: #...
-PLATFORM: ...
-RESEARCH: PASS | INCOMPLETE | BLOCKED
-CANDIDATE 1: COMPLETE | INCOMPLETE
-CANDIDATE 2: COMPLETE | INCOMPLETE
-CANDIDATE 3: COMPLETE | INCOMPLETE
-COMPARISON: COMPLETE | INCOMPLETE
-CANDIDATE 4: COMPLETE | INCOMPLETE
-STATE: READY_FOR_SUPERVISOR_REVIEW | BLOCKED
-```
-
-El agente deja el resultado en GitHub y devuelve control al Supervisor.
-
-
-## Baseline protection
-
-Before working on any platform Work Item, read:
-
-- `references/README.md`
-- `references/WORKFLOW_BASE_ORIGINAL.md` only when baseline comparison is required.
-
-The baseline is frozen reference material.
-
-```text
-BASELINE_REFERENCE = references/WORKFLOW_BASE_ORIGINAL.md
+Rules:
 BASELINE_WRITES = FORBIDDEN
-REFERENCES_WRITES = FORBIDDEN
-SOURCE_REPOSITORY_WRITES = FORBIDDEN
-```
+REFERENCES_WRITES = FORBIDDEN unless a later explicit authority says otherwise.
+SOURCE_REPOSITORY_WRITES = FORBIDDEN.
 
-The Implementer may analyze, quote, classify and compare the baseline, but may not edit it or treat candidate proposals as amendments to it.
+Current operationalization invariant:
 
-All new workflow proposals must live outside `references/**` and must be clearly labeled `CANDIDATE`, `PROPOSAL` or `DRAFT` until Supervisor review.
+MEJORA = BASELINE FUNCIONAL + ADAPTACIÓN JUSTIFICADA
 
-If any instruction appears to require modifying the baseline:
+Every baseline section must be:
+PRESERVE / ADAPT / EXTEND / NOT_APPLICABLE_WITH_JUSTIFICATION.
 
-```text
-STOP
-→ BLOCKED/ESCALATE
-→ Supervisor
-```
+No silent omission.
+
+## Source precedence
+
+For platform operationalization:
+1. current Human/Supervisor Work Item authority;
+2. functional baseline for operational structure/lifecycle;
+3. accepted Issue #2 Common Core/non-regression rules;
+4. accepted Issue #2 platform evidence/deltas;
+5. summaries/presentation artifacts.
+
+Evidence does not create authority.
+A summary cannot weaken a normative rule.
+
+## Roles
+
+### Human
+Owns intent, priorities, material scope decisions, credentials/account permissions, material costs/provider commitments, and product publication.
+
+PUBLISH = HUMAN ACTION.
+
+### Supervisor
+Creates/bounds Work Items, defines verification, independently reviews exact HEAD, and issues:
+SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE.
+
+Where separately authorized by the governing Workflow, Supervisor may execute merge only after merge-eligibility checks.
+
+### Implementer / researcher
+Reads bounded context, implements authorized work, verifies, reviews diff, commits/pushes/opens or updates PR when authorized, and persists evidence/handoff.
+
+MUST stop on material repository/Work Item/role/base/scope/authority mismatch.
+
+### External actor
+Optional and capability-specific.
+Must use a persisted durable activity record.
+No technical capability creates semantic, merge, scope or publication authority.
+
+Required reconstruction:
+request → authority → execution → evidence → result → stop/escalation.
+
+## Research / freshness policy
+
+Use accepted Issue #2 evidence by default.
+
+Fresh research is required only when a current external fact is material and accepted evidence may be stale.
+
+When research is triggered:
+- prefer primary/official sources for capability, policy, compatibility, security and release requirements;
+- distinguish project fact, external fact, empirical observation, inference, recommendation and unknown;
+- persist strategic rationale for material decisions.
+
+Do not freeze provider/version guidance as timeless workflow semantics.
+
+## Current platform closure loop
+
+### BUILD
+Supervisor opens one bounded persistent platform activity.
+Implementer produces the complete workflow from:
+- approved Workflow Document Contract;
+- approved platform baseline adaptation matrix;
+- accepted Issue #2 evidence;
+- governing Work Item.
+
+Persist handoff and stop.
+
+### REVIEW
+Supervisor performs independent exact-SHA/content review against the Definition of Done and acceptance tests.
+
+PASS:
+platform may close/accept under authority.
+
+REWORK:
+persist one focused same-objective correction task.
+
+### OPTIONAL THIRD PASS
+Execute only unresolved defects.
+If the defect belongs to shared architecture, stop platform work and return to architecture review.
+
+Two rounds are the normal efficiency target, not a correctness ceiling.
+
+## Operational Definition of Done
+
+A platform workflow must pass:
+- complete baseline coverage;
+- standalone usability;
+- full lifecycle coverage;
+- exact-SHA semantics;
+- authority adversarial checks;
+- STOP/escalation behavior;
+- Implementer/Supervisor recovery;
+- durable external-actor recovery;
+- platform-delta checks;
+- template/checklist completeness;
+- provenance/evidence trace;
+- lossless summary-regression check.
+
+Any unexplained weakening of baseline function is HARD VETO.
+
+## Checkpoint / handoff discipline
+
+Durable GitHub state is authoritative.
+
+A handoff should identify:
+WORK ITEM
+ROLE
+BRANCH/PR
+HEAD
+CHANGED PATHS
+VERIFICATION
+CI/EVIDENCE
+UNEXPECTED FINDING
+STATE
+
+A new commit invalidates semantic acceptance for another SHA.
+
+Never depend on remembering a prior chat/session.
+
+## Historical Candidate methodology reference
+
+Candidate 1: simple/minimal.
+Candidate 2: portability/provider independence/recovery.
+Candidate 3: verification/automation/security/long-horizon persistence.
+Candidate 4: synthesis, not automatic score winner.
+
+This remains evidence methodology for Issue #2 and may be reused only if a later Work Item explicitly authorizes new comparative research.
