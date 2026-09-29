@@ -4,53 +4,79 @@ STATUS: PROPOSAL — NOT CANONICAL
 
 WORKPACK: CROSS-PLATFORM WORKFLOWS CYCLE 01
 
-REPOSITORY: cmiloarevalo-hash/W-F-Android
-WORK ITEM: Issue #2
-PR: #7
-BRANCH: workpack/cross-platform-workflows-cycle-01
-TASK 10 REWORK BASE / ACCEPTED TASK 09 SHA: c1fe4ba3e80dd5d9077188026fd1d1988fb066bc
-TASK 10 REWORK COMMIT: exact commit containing this file; verify from PR #7 HEAD and TASK_10_REWORK_HANDOFF
-FINAL PR STATUS: OPEN — EVALUATION ONLY
-MERGE: NO
+REPOSITORY: cmiloarevalo-hash/W-F-Android  
+WORK ITEM: Issue #2  
+PR: #7  
+BRANCH: workpack/cross-platform-workflows-cycle-01  
+FINAL PR STATUS: OPEN — EVALUATION ONLY  
+MERGE: NO  
 CANONICAL ADOPTION: NO
-TASK_10_SEMANTIC_ACCEPTED: NOT CLAIMED
-STATE: STOP_FOR_SUPERVISOR_REVIEW
 
-## Package status
+## Final SEMANTIC_ACCEPTED chain — TASK 01–10
 
-ANDROID PROPOSAL: UPDATED
-IOS PROPOSAL: UPDATED
-WEB PROPOSAL: UPDATED
-COMMON CORE PROPOSAL: UPDATED
-PRESENTATION BRIEF: UPDATED
+| Task | Final SEMANTIC_ACCEPTED SHA |
+|---|---|
+| TASK 01 | `a863f099cd0adf9b62fc9185c990dddda614a795` |
+| TASK 02 | `e57b4aa6cbca215fc162ae4a0d7aa8800e706dd5` |
+| TASK 03 | `6e061a0793e039f3eccdc7514d7b89b62bbb747b` |
+| TASK 04 | `1e594bfce5abbd9c2b13933aa13aa293b66a19d8` |
+| TASK 05 | `018cecbb6446db682fd4061d1b03b7d81e3e5d64` |
+| TASK 06 | `8d7038cf774db3aada3d48270b6d0077ef84e88d` |
+| TASK 07 | `8ca5f3c9bc26484e2a26e1098afd475e6754169a` |
+| TASK 08 | `e1013c3a629032e98a4169b8b58eca77edd84230` |
+| TASK 09 | `c1fe4ba3e80dd5d9077188026fd1d1988fb066bc` |
+| TASK 10 | `7dfd4568f73dce1d374b226ddcef922f783bdd56` |
 
-All outputs remain proposal artifacts only.
+TASK 10 exact acceptance:
+- Supervisor comment `5882137503`
+- `TASK_10_SEMANTIC_ACCEPTED_AT: 7dfd4568f73dce1d374b226ddcef922f783bdd56`
 
-## Accepted TASK 01–09 semantic chain
+## Historical checkpoints — preserved separately
 
-- TASK 01: `a863f099cd0adf9b62fc9185c990dddda614a795`
-- TASK 02: `e57b4aa6cbca215fc162ae4a0d7aa8800e706dd5`
-- TASK 03: `6e061a0793e039f3eccdc7514d7b89b62bbb747b`
-- TASK 04: `1e594bfce5abbd9c2b13933aa13aa293b66a19d8`
-- TASK 05: `018cecbb6446db682fd4061d1b03b7d81e3e5d64`
-- TASK 06: `8d7038cf774db3aada3d48270b6d0077ef84e88d`
-- TASK 07: `8ca5f3c9bc26484e2a26e1098afd475e6754169a`
-- TASK 08: `e1013c3a629032e98a4169b8b58eca77edd84230`
-- TASK 09: `c1fe4ba3e80dd5d9077188026fd1d1988fb066bc`
+These are original task checkpoints, retained for traceability only:
 
-These SHAs are the final SEMANTIC_ACCEPTED states. Historical task checkpoints remain traceability evidence but are not substitutes for the final reviewed SHA.
+| Task | Historical checkpoint SHA |
+|---|---|
+| TASK 01 | `dfe67727fe7e41e4fb817745ef811e2f0bde2af9` |
+| TASK 02 | `3e3fe5fb144b28cf40343e22895ea67ca14f92df` |
+| TASK 03 | `a83d0c88de2cab09566bd534a8a99253469932cb` |
+| TASK 04 | `db136e8cfd89c731527500e6e718b282ca90a433` |
+| TASK 05 | `51b575094c59a8496fd76f98439be7692942f1bb` |
+| TASK 06 | `0e93f0507c4403f4bfd23bad44ba69b61b0147b5` |
+| TASK 07 | `dd49328f960d72338839d3d70350f2c89eefb7f8` |
+| TASK 08 | `e4063f7cf4fc8eff7b3120a2511d0a723114a849` |
+| TASK 09 | `9a0da69e4fd031e203080d165eb65b89a9de5c22` |
+| TASK 10 | `4ca25bd805588a0dffe80f557bf73ee5238600ce` |
 
-## Governance guarantees carried into final package
+Historical checkpoints do not supersede later exact-SHA Supervisor decisions.
+
+## Historical REWORK record
+
+The durable record remains explicit:
+
+- TASK 01–08 original checkpoints were followed by exact-SHA corrections and final semantic acceptance.
+- Original TASK 08 contained a publication-authority weakening that the Supervisor later classified as a HARD VETO.
+- TASK 08 accepted correction: `e1013c3a629032e98a4169b8b58eca77edd84230`.
+- Original TASK 09 checkpoint `9a0da69e4fd031e203080d165eb65b89a9de5c22` contained a confirmed false negative because it failed to detect that TASK 08 defect.
+- TASK 09 accepted correction: `c1fe4ba3e80dd5d9077188026fd1d1988fb066bc`.
+- Original TASK 10 package was stale against the accepted REWORK chain.
+- TASK 10 accepted correction: `7dfd4568f73dce1d374b226ddcef922f783bdd56`.
+
+No historical correction is erased.
+
+## Final governance package state
+
+The accepted proposal package preserves:
 
 1. Work Item contract = Objective + Acceptance Criteria + Authorized Scope + Relevant Sources + Verification + Base.
-2. Semantic Scope + Path Scope remain independent.
-3. Supervisor decisions bind to exact SHA.
-4. Formal states remain `SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE`.
-5. Same-objective REWORK normally stays in the same Issue/branch/PR.
-6. Implementer never self-merges; `SEMANTIC_ACCEPTED != MERGE_ELIGIBLE`.
+2. Semantic Scope + Path Scope as independent constraints.
+3. Exact-SHA Supervisor review.
+4. `SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE`.
+5. Same-objective REWORK continuity.
+6. Supervisor-only merge; `SEMANTIC_ACCEPTED != MERGE_ELIGIBLE`.
 7. `PUBLISH = HUMAN ACTION`.
-8. Session recovery is reconstructable from durable GitHub state.
-9. Baseline functional non-regression is a pre-scoring gate; unexplained weakening is HARD VETO.
+8. GitHub-based session recovery.
+9. Baseline functional non-regression / HARD VETO.
 
 HARD VETO cannot be offset by score, CI/tests, automation, portability, cost or external-actor capability.
 
@@ -58,28 +84,11 @@ Authority invariant:
 
 `TECHNICAL CAPABILITY != WORKFLOW AUTHORITY`
 
-## External actor durable activity
-
-Every invocation must persist a durable GitHub activity/record under the governing Work Item per Issue #2 comment `5879863384`.
-
-Required lifecycle:
+External-actor invocations retain the durable GitHub activity requirement from Issue #2 comment `5879863384`:
 
 `request → authority → execution → evidence → result → stop/escalation`
 
-Required record includes ACTIVITY_ID/reference, GOVERNING_WORK_ITEM, ACTOR_TYPE, CAPABILITY, OBJECTIVE, PRECONDITIONS, AUTHORIZED_OPERATIONS, FORBIDDEN_OPERATIONS, EXPECTED_BASELINE/ref/SHA, EVIDENCE_REQUIRED, RESULT, STOP_CONDITIONS, ESCALATION_PATH and STATUS.
-
-The record is evidence/continuity only and creates no authority.
-
-## Historical REWORK record preserved
-
-- Original TASK 09 checkpoint `9a0da69e4fd031e203080d165eb65b89a9de5c22` contained a confirmed false negative.
-- Original TASK 08 publication-authority wording was later classified as HARD VETO by Supervisor comment `5880275506`.
-- TASK 08 blocking correction was accepted at `e1013c3a629032e98a4169b8b58eca77edd84230`.
-- TASK 09 was reworked to record the miss and re-audit the corrected chain.
-- TASK 09 was accepted at `c1fe4ba3e80dd5d9077188026fd1d1988fb066bc`.
-- This TASK 10 REWORK updates the final package so presentation compression does not reintroduce those defects.
-
-No claim that “no blocking rework occurred” remains.
+The activity record is evidence/continuity only and creates no authority.
 
 ## Platform deltas preserved
 
@@ -103,34 +112,33 @@ Web:
 
 No forced symmetry is introduced.
 
-## Publication boundary
+## Baseline and scope
 
-`PUBLISH = HUMAN ACTION`
+Baseline:
+- `references/WORKFLOW_BASE_ORIGINAL.md`
+- blob: `fa6ce8e396e1ae422ce4feab3f97d7d37bb43f83`
+- modified by final state sync: NO
 
-Build/sign/upload/deploy capability, credentials or ordinary technical permission do not transfer publication authority to Implementer, CI or external actor.
+FINAL_STATE_SYNC authority:
+- Issue #2 comment `5882139966`
+- accepted base: `7dfd4568f73dce1d374b226ddcef922f783bdd56`
 
-## Baseline
+Authorized final sync files only:
+- `STATE.md`
+- `outputs/10/final-handoff.md`
 
-references/WORKFLOW_BASE_ORIGINAL.md  
-blob SHA: fa6ce8e396e1ae422ce4feab3f97d7d37bb43f83  
-modification by TASK 10 REWORK: NO
+No workflow, proposal, scoring, baseline or source evidence is changed by this synchronization.
 
-## Final proposal artifacts
-
-- outputs/10/android-workflow-proposal.md
-- outputs/10/ios-workflow-proposal.md
-- outputs/10/web-workflow-proposal.md
-- outputs/10/common-core-proposal.md
-- outputs/10/presentation-brief.md
-- outputs/10/final-handoff.md
-
-## Authority boundary
+## Final authority boundary
 
 - PR #7 remains evaluation-only.
-- No merge is authorized by this package.
-- No self-approval has occurred.
+- No merge has been performed.
+- No merge is authorized by this synchronization.
 - No canonical adoption has occurred.
-- Supervisor/Human retains review/adoption authority.
+- No canonical adoption is authorized by this synchronization.
 - Human retains publication authority.
+- The final state synchronization commit requires exact-HEAD Supervisor review.
 
-FINAL ACTION: STOP_FOR_SUPERVISOR_REVIEW
+STATE: FINAL_STATE_SYNC_PENDING_SUPERVISOR_FINAL_REVIEW
+
+FINAL ACTION: STOP_FOR_SUPERVISOR_FINAL_REVIEW
