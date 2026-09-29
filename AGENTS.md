@@ -67,8 +67,10 @@ references/WORKFLOW_BASE_ORIGINAL.md
 
 Rules:
 BASELINE_WRITES = FORBIDDEN
-REFERENCES_WRITES = FORBIDDEN unless a later explicit authority says otherwise.
+REFERENCES_WRITES = FORBIDDEN
 SOURCE_REPOSITORY_WRITES = FORBIDDEN.
+
+A future change to frozen-reference governance requires a separate explicit governing Work Item/decision. It is not an exception available inside the current operationalization phase.
 
 Current operationalization invariant:
 

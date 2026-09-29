@@ -44,6 +44,12 @@ Source codes:
 | 5. GitHub | PRESERVE | Persistent control plane for Issue, branch, commit, PR, diff, CI and decisions. | No Android-specific semantic change. | BASE + CORE | GitHub / evidence systems | None. |
 | 6. Documentación del proyecto | ADAPT | Distinguish product documentation from workflow documentation. | Android workflow may reference Android project engineering docs but remains separate from app documentation. | BASE + ISSUE8 | Reading/context policy + provenance | Exact project doc paths are project-specific. |
 | 7. Unidad de trabajo: GitHub Issue | PRESERVE | Six-field Work Item contract. | Android environment/device/release details populate fields without replacing them. | BASE + CORE + A4 | Work Item contract | None. |
+| Objective | PRESERVE | Define what the Work Item must achieve. | Android-specific implementation detail may refine the objective context but cannot replace or silently expand the authorized outcome. | BASE + CORE | Work Item contract — Objective | None. |
+| Acceptance Criteria | EXTEND | Define observable conditions that prove the Work Item objective is satisfied. | Preserve the criteria function and add Android-specific observable verification/evidence requirements when the change requires host, device, signing, or release-boundary proof. | BASE + CORE + A4 | Work Item contract — Acceptance Criteria | Concrete criteria remain Work Item-specific. |
+| Authorized Scope | PRESERVE | Define the authorized file/module boundary independently from semantic authority. | Android module/path details may populate the scope, but path permission never grants unrelated semantic permission. | BASE + CORE | Work Item contract — Authorized Scope | None. |
+| Relevant Sources | ADAPT | Identify the documentation/evidence the Implementer must read. | Point to the standalone Android workflow, project Android docs, and only the accepted/current sources materially required by the task; Issue #2 remains provenance rather than normal execution dependency. | BASE + CORE + ISSUE8 | Work Item contract — Relevant Sources | Project-specific source paths. |
+| Verification | ADAPT | Define the exact checks/evidence required before handoff. | Use project-native Android verification, including relevant local/JVM tests, lint, affected build tasks, and risk-triggered device evidence when applicable. | BASE + A4 + FINAL-A | Work Item contract — Verification | Exact commands/device matrix are project-specific. |
+| Base | PRESERVE | Bind the task to the branch/commit from which authorized work starts. | Preserve exact ref/SHA semantics; Android toolchain or device capability cannot substitute for the authorized repository base. | BASE + CORE | Work Item contract — Base | None. |
 | 8. Dos tipos de scope | PRESERVE | Semantic Scope and Path Scope both required. | No Android-specific semantic change. | BASE + CORE | Semantic Scope + Path Scope | None. |
 | Semantic Scope | PRESERVE | Authorize behavior/change, not paths. | No Android-specific semantic change. | BASE + CORE | Semantic Scope | None. |
 | Path Scope | PRESERVE | Authorize files/modules, not behavior. | No Android-specific semantic change. | BASE + CORE | Path Scope | None. |
@@ -102,8 +108,34 @@ Source codes:
 
 ## Coverage self-check
 
-Real baseline headings covered by this matrix:
-65
+Frozen baseline Markdown headings counted for coverage:
+71
+
+Counting rule:
+- 1 structural title heading is represented by the `Document header / status / provenance` matrix row. It is metadata rather than a normative operational subsection, but it remains explicitly traced.
+- 64 additional baseline headings outside the six-field Work Item template are explicitly classified.
+- 6 Work Item field subheadings inside the baseline Markdown template are normative operational subsections and are now explicit child rows:
+  - Objective
+  - Acceptance Criteria
+  - Authorized Scope
+  - Relevant Sources
+  - Verification
+  - Base
+
+Matrix classified rows:
+71
+
+Normative operational headings/subheadings:
+70
+
+Structural metadata headings:
+1
+
+Missing headings/subheadings:
+0
+
+Silently grouped normative subsections:
+0
 
 NOT_APPLICABLE_WITH_JUSTIFICATION:
 - 29.12 Compatibilidad operacional inmediata — Issue #53 only.
