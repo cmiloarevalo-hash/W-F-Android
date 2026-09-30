@@ -852,6 +852,161 @@ MISMATCH CHECK: PASS | FAIL
 STATE: READY | BLOCKED
 ~~~
 
+### 9.3 Specification sufficiency gate
+
+Before **substantial implementation**, the Implementer MUST verify that enough current engineering/product specification exists to make the Objective and Acceptance Criteria executable and testable.
+
+This gate is lightweight. It does not require exhaustive documentation for a bounded task.
+
+Classify a material gap as one of:
+
+- `TECHNICAL_UNKNOWN`;
+- `PRODUCT_GAME_DESIGN_UNKNOWN`;
+- `SPECIFICATION_AMBIGUITY`;
+- `SPECIFICATION_ABSENCE`;
+- `STALE_SPECIFICATION`.
+
+If material specification is missing, ambiguous, contradictory, stale, or insufficient:
+
+`STOP IMPLEMENTATION`.
+
+The Implementer MUST NOT invent product/game intent or silently select a preferred interpretation.
+
+Persist:
+
+~~~text
+SPECIFICATION_GAP_REPORT
+
+WORK_ITEM:
+ACTIVITY_ID:
+TARGET_IMPLEMENTATION:
+CURRENT_SPEC / SPEC_REF:
+GAP_TYPE:
+MISSING_INFORMATION:
+QUESTIONS_REQUIRING_HUMAN_DIRECTION:
+TECHNICAL_QUESTIONS_RESEARCHABLE:
+WHY_IMPLEMENTATION_CANNOT_SAFELY_CONTINUE:
+PROPOSED_RESEARCH_SCOPE:
+EXPECTED_RESEARCH_OUTPUT:
+NEXT_ACTOR:
+STATE: BLOCKED_FOR_SPECIFICATION
+~~~
+
+Rules:
+
+- product/game-design intent that cannot be inferred safely returns to Supervisor/Human;
+- technical research requires a separately persisted bounded authority;
+- `RESEARCH AUTHORITY != IMPLEMENTATION AUTHORITY`;
+- `RESEARCH RESULT != SPECIFICATION AUTHORITY`;
+- specification resolution precedes a new substantial implementation task.
+
+### 9.4 Document consistency gate
+
+Activate `DOCUMENT_CONSISTENCY_GATE` when substantial work depends on multiple normative specifications, architecture/project rules, workflow documents, or technical instructions.
+
+Use progressive disclosure:
+
+1. inspect the documents directly relevant to the Work Item;
+2. follow their normative references;
+3. expand only when evidence reveals conflict, ambiguity, superseded dependency, or authority uncertainty.
+
+Classify each material document as:
+
+- `CURRENT`;
+- `SUPERSEDED`;
+- `HISTORICAL`;
+- `PROVENANCE_ONLY`;
+- `NON_NORMATIVE`;
+- `UNKNOWN_STATUS`.
+
+Use the source-precedence rules in section 0.3 and current Work Item authority. If applicable precedence remains materially ambiguous, STOP.
+
+Check for:
+
+- materially contradictory instructions;
+- duplicate or competing normative instructions;
+- superseded/stale references;
+- obsolete material SHAs;
+- unresolved TODO/TBD that affects implementation;
+- two sources appearing to independently authorize incompatible actions;
+- insufficient collective coverage to execute Acceptance Criteria without inventing behavior.
+
+Duplicate instructions may be classified as:
+
+- `CONSISTENT_DUPLICATION`;
+- `REDUNDANT_DUPLICATION`;
+- `CONFLICTING_DUPLICATION`;
+- `AMBIGUOUS_DUPLICATION`.
+
+`MULTIPLE SOURCES != MULTIPLE AUTHORITIES`.
+
+If a material conflict or unknown current source can change implementation behavior:
+
+`STOP IMPLEMENTATION`.
+
+Persist:
+
+~~~text
+DOCUMENT_CONSISTENCY_GAP_REPORT
+
+WORK_ITEM:
+ACTIVITY_ID:
+TARGET_IMPLEMENTATION:
+DOCUMENTS_REVIEWED:
+CURRENT_DOCUMENT_CANDIDATES:
+SUPERSEDED_DOCUMENTS:
+CONFLICT_TYPE:
+CONFLICTING_INSTRUCTIONS:
+AUTHORITY_AMBIGUITY:
+AFFECTED_REQUIREMENTS:
+IMPLEMENTATION_RISK:
+QUESTIONS_REQUIRING_HUMAN_DECISION:
+QUESTIONS_RESEARCHABLE:
+PROPOSED_RESOLUTION_SCOPE:
+NEXT_ACTOR:
+STATE: BLOCKED_FOR_DOCUMENT_CONSISTENCY
+~~~
+
+Do not perform a full repository documentation audit by default.
+
+### 9.5 Persistent Work Readiness
+
+Run `PERSISTENT_WORK_READINESS` before substantial/persistent work when material uncertainty, multi-session execution, long import/build/test cycles, external/local capability, device access, credentials/cost, or similar foreseeable dependencies can block or invalidate execution.
+
+Do not apply the full readiness gate to trivial/bounded work that is safely executable without it.
+
+Check only material items:
+
+1. authority;
+2. Objective and executable Acceptance Criteria;
+3. Semantic Scope and Path Scope;
+4. exact Base/SHA;
+5. required current specifications;
+6. document consistency where triggered;
+7. volatile technical facts;
+8. required tools/capabilities;
+9. credentials/accounts/cost authority;
+10. physical-device or external-actor need;
+11. build/environment/dependencies;
+12. unresolved product decisions;
+13. expected evidence/output;
+14. foreseeable blockers;
+15. checkpoint/recovery viability through GitHub.
+
+Allowed readiness states:
+
+- `READY`;
+- `READY_WITH_KNOWN_RISKS`;
+- `NOT_READY_RESEARCH_REQUIRED`;
+- `NOT_READY_DECISION_REQUIRED`;
+- `NOT_READY_CAPABILITY_REQUIRED`.
+
+These are readiness/evidence states only. They do not replace Supervisor semantic decisions.
+
+A material specification gap or material document conflict MUST NOT be downgraded to `READY_WITH_KNOWN_RISKS`.
+
+`PERSISTENCE != BLIND START`.
+
 ---
 
 ## 10. Reading and context policy
@@ -892,6 +1047,27 @@ Do not load:
 - external sources not needed by the task.
 
 Context size is not evidence quality.
+
+### 10.5 Optional Unity/Game profile activation
+
+If the active Work Item materially targets a Unity-based Android game/project, load:
+
+`ANDROID_WORKFLOW.md + ANDROID_UNITY_GAME_PROFILE.md + CURRENT PROJECT/GAME SPECIFICATIONS`.
+
+Rules:
+
+- `ANDROID_WORKFLOW.md` remains the governing standalone Android platform workflow;
+- `ANDROID_UNITY_GAME_PROFILE.md` is an optional subordinate operational profile;
+- profile activation does not create new authority;
+- profile rules apply only where relevant to the active Unity/Game Work Item;
+- concrete game behavior, targets, scenes, budgets, and product decisions come from current project/game specifications and the Work Item;
+- non-Unity Android Work Items do not require the Unity/Game profile.
+
+`ANDROID_UNITY_GAME_PROFILE EXTENDS ANDROID_WORKFLOW`.
+
+`ANDROID_UNITY_GAME_PROFILE DOES NOT REPLACE ANDROID_WORKFLOW`.
+
+`PROFILE ACTIVATION != NEW WORKFLOW AUTHORITY`.
 
 ---
 
@@ -1360,6 +1536,20 @@ Rules:
 - do not claim SEMANTIC_ACCEPTED;
 - stop after handoff unless a later authority authorizes more work.
 
+### 18.1 Profile-aware handoff additions
+
+When the optional Unity/Game profile is active and the fields are material, the handoff MAY additionally include:
+
+- profile activation;
+- current game/engineering specification refs;
+- document-consistency/readiness state;
+- Local Execution Agent activity;
+- Build ID/hash;
+- local/runtime/device Test ID and evidence;
+- pending game-specific verification.
+
+Do not add irrelevant game/runtime metadata to documentation-only or host-only work.
+
 ---
 
 ## 19. Supervisor exact-SHA review
@@ -1701,6 +1891,22 @@ NEXT AUTHORIZED ACTION:
 MISMATCH CHECK: PASS | FAIL
 ~~~
 
+### 26.4 Profile-aware persistent recovery
+
+When the Unity/Game profile or substantial persistent work is active, recover additionally when material:
+
+- profile activation;
+- current specification refs/status;
+- document-consistency state;
+- persistent-work readiness state;
+- current milestone;
+- completed milestones;
+- pending local/device/performance/playtest evidence;
+- Local Execution Agent activity/result;
+- next authorized action.
+
+A new session MUST still reconstruct authority from GitHub, not from the prior session.
+
 ---
 
 ## 27. Supervisor session recovery
@@ -1831,6 +2037,37 @@ NONE | REQUIRES DECISION
 ~~~
 
 Research informs authority decisions; it does not create authority.
+
+### 29.6 Pre-work research rule
+
+A material unknown discovered by bootstrap/readiness does not authorize the Implementer to begin an open-ended research phase.
+
+Required flow:
+
+`MATERIAL UNKNOWN`
+→ classify
+→ STOP implementation when necessary
+→ persist the exact gap
+→ Supervisor/Human path as applicable
+→ separately authorized bounded research
+→ persist result/evidence/remaining unknowns
+→ resolve/update specification under proper authority if required
+→ rerun applicable gates
+→ new implementation authority.
+
+Research only material unknowns that can:
+
+- block execution;
+- invalidate evidence;
+- cause material rework;
+- require unauthorized credentials/cost;
+- materially redirect product or architecture.
+
+Do not research "just in case".
+
+`RESEARCH AUTHORITY != IMPLEMENTATION AUTHORITY`.
+
+`RESEARCH RESULT != SPECIFICATION AUTHORITY`.
 
 ---
 
@@ -2005,6 +2242,20 @@ Its reusable safety functions are preserved through:
 
 This is the only baseline area classified NOT_APPLICABLE_WITH_JUSTIFICATION by the accepted Android adaptation matrix.
 
+### 30.13 Local Execution Agent profile
+
+When a Unity/Game Work Item requires local Editor, device, profiler, or interactive capability that the primary Implementer environment cannot provide, the optional Unity/Game profile may specialize the existing external-actor contract as:
+
+`EXTERNAL_ACTOR / LOCAL_EXECUTION_AGENT`.
+
+This is a capability profile, not a new actor authority class.
+
+The detailed Unity/Game capability, test/result, and evidence fields live in `ANDROID_UNITY_GAME_PROFILE.md`.
+
+Default repository write authority for this profile is NO unless a separate persisted activity explicitly authorizes repository writes.
+
+`LOCAL CAPABILITY != WORKFLOW AUTHORITY`.
+
 ---
 
 ## 31. Technical permission != Workflow authority
@@ -2139,6 +2390,19 @@ Greenfield guidance MAY use current Android architectural recommendations.
 
 Existing applications remain valid without forced migration.
 
+### 32.10 Optional Unity/Game profile boundary
+
+Unity/Game mechanics are not universal Android requirements.
+
+When section 10.5 activates the profile:
+
+- this Android Workflow remains governing for authority, lifecycle, exact-SHA review, merge, publication, recovery, and Research/Freshness semantics;
+- `ANDROID_UNITY_GAME_PROFILE.md` supplies only Unity/Game operational deltas;
+- project/game specifications supply concrete mechanics, behavior, performance budgets, device tiers, scenes, protocols, and product decisions;
+- Unity/SDK/NDK/JDK compatibility remains a current/project fact and is freshness-gated when material.
+
+A native/non-Unity Android task remains fully operable from this document without opening the Unity/Game profile.
+
 ---
 
 ## 33. Operational Definition of Done
@@ -2170,6 +2434,18 @@ For a normal Work Item:
 - handoff persisted;
 - no self-approval;
 - no product publication by technical actor.
+
+### 33.2 Triggered pre-work/profile checks
+
+For substantial work, before claiming readiness for implementation/review as applicable:
+
+- specification sufficiency passed, or an exact gap report stopped the work;
+- document consistency passed when multiple normative sources applied, or an exact conflict report stopped the work;
+- Persistent Work Readiness ran only when its trigger applied;
+- bounded research did not self-authorize;
+- profile activation is explicit when Unity/Game rules are used.
+
+For a Unity/Game Work Item, also confirm that concrete game/product targets come from current project specifications/Work Item rather than this workflow.
 
 ---
 
@@ -2367,6 +2643,48 @@ If any invariant disappears or weakens:
 
 REWORK / HARD VETO.
 
+## TEST K — Specification and document safety
+
+Scenario:
+
+A substantial Work Item lacks a material current specification, or two current-looking normative documents conflict.
+
+Expected:
+
+- implementation stops;
+- the appropriate gap report identifies the exact missing/conflicting material;
+- the Implementer does not invent product intent or choose a preferred authority source;
+- technical research requires separate bounded authority;
+- implementation resumes only after proper resolution and new authority.
+
+## TEST L — Persistent readiness proportionality
+
+Scenario A:
+A short bounded host-only change has clear authority, scope, environment, and verification.
+
+Expected:
+No full Persistent Work Readiness ceremony is required.
+
+Scenario B:
+A multi-session Unity/Android activity depends on project specs, toolchain compatibility, local device capability, and long-running verification.
+
+Expected:
+Persistent Work Readiness records the material readiness state before substantial execution.
+
+## TEST M — Unity profile non-regression
+
+Scenario A:
+A non-Unity Android Work Item is executed.
+
+Expected:
+This Android Workflow is sufficient without loading the Unity/Game profile.
+
+Scenario B:
+A Unity/Game Work Item activates `ANDROID_UNITY_GAME_PROFILE.md`.
+
+Expected:
+The profile extends operational mechanics but cannot redefine Human/Supervisor/Implementer authority, exact-SHA semantics, merge authority, or publication authority.
+
 ---
 
 ## 35. Execution templates and checklists
@@ -2554,6 +2872,48 @@ Use sections 26 and 27 recovery templates.
 
 Use section 30.1 activity template.
 
+## 35.11 Specification gap template
+
+Use section 9.3 `SPECIFICATION_GAP_REPORT`.
+
+## 35.12 Document consistency gap template
+
+Use section 9.4 `DOCUMENT_CONSISTENCY_GAP_REPORT`.
+
+## 35.13 Persistent Work Readiness template
+
+~~~text
+PERSISTENT_WORK_READINESS
+
+WORK_ITEM:
+ACTIVITY_ID:
+BASE_SHA:
+SUBSTANTIAL/PERSISTENT TRIGGER:
+AUTHORITY: CLEAR | NOT_CLEAR
+OBJECTIVE/AC: EXECUTABLE | NOT_EXECUTABLE
+SEMANTIC/PATH SCOPE: CLEAR | NOT_CLEAR
+REQUIRED SPECIFICATIONS: SUFFICIENT | GAP
+DOCUMENT CONSISTENCY: READY | NON_BLOCKING_REDUNDANCY | NOT_READY | N/A
+VOLATILE FACTS: CURRENT_ENOUGH | RESEARCH_REQUIRED | N/A
+TOOLS/CAPABILITIES: AVAILABLE | CAPABILITY_REQUIRED
+CREDENTIAL/ACCOUNT/COST: READY | DECISION_REQUIRED | N/A
+DEVICE/EXTERNAL ACTOR: READY | CAPABILITY_REQUIRED | N/A
+BUILD/ENV/DEPENDENCIES: READY | NOT_READY
+UNRESOLVED PRODUCT DECISION: NO | YES
+EXPECTED EVIDENCE: KNOWN | UNKNOWN
+FORESEEABLE BLOCKERS:
+CHECKPOINT/RECOVERY: VIABLE | NOT_VIABLE
+
+STATE:
+READY |
+READY_WITH_KNOWN_RISKS |
+NOT_READY_RESEARCH_REQUIRED |
+NOT_READY_DECISION_REQUIRED |
+NOT_READY_CAPABILITY_REQUIRED
+~~~
+
+This template is triggered, not universal.
+
 ---
 
 ## 36. Provenance, maintenance, and lossless derivation
@@ -2619,6 +2979,18 @@ Keep current versions/policies in:
 - release checklist;
 
 as appropriate.
+
+### 36.6 Unity/Game profile maintenance
+
+`ANDROID_UNITY_GAME_PROFILE.md` is a subordinate extension of this workflow.
+
+Maintenance rules:
+
+- this document remains standalone for non-Unity Android work;
+- the profile MUST defer to this workflow on authority/lifecycle conflict;
+- profile changes MUST NOT weaken any baseline or accepted Android adaptation;
+- game-specific mechanics MUST NOT leak into universal native-Android requirements without separate justification;
+- concrete project/game behavior remains outside the profile and belongs to current project specifications/Work Items.
 
 ---
 
