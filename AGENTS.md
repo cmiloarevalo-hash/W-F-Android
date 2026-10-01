@@ -1,234 +1,90 @@
-# AGENTS.md — Programa persistente de diseño de workflows
+# AGENTS.md — Operational Workflow Package Entry Point
 
-## Rol
+## Current operating model
 
-El agente que trabaja en este repositorio actúa exclusivamente como **Agente implementador / investigador técnico**.
+This repository contains the consolidated candidate package for operational engineering workflows:
 
-No asume el rol de Supervisor.
-No se autoaprueba.
-No redefine por iniciativa propia la autoridad del workflow.
-No hace merge por iniciativa propia.
-No sustituye decisiones humanas reservadas.
+- Android;
+- iOS;
+- Web;
+- optional bounded platform profiles such as Android Unity/Game.
 
-El **Supervisor** es Chat Web GPT.
-GitHub es la memoria persistente del programa.
+For normal work, do **not** reconstruct the historical Candidate 1–4 research cycle.
 
-## Objetivo persistente
+Start from:
 
-Investigar, diseñar, comparar y refinar workflows de ingeniería asistida por agentes para:
+1. the active GitHub Work Item / Issue;
+2. `workflows/README.md`;
+3. the applicable platform workflow;
+4. current project/product specifications explicitly required by that workflow or Work Item.
 
-1. Android.
-2. iPhone / iOS.
-3. Aplicaciones web.
+GitHub is durable authority and memory. Chat/session memory is not authority.
 
-Cada workflow debe estar pensado para colaboración entre:
+## Role
 
-- Humano;
-- Supervisor;
-- Agente implementador;
-- GitHub como fuente persistente de verdad;
-- CI/pruebas/evidencia;
-- un rol externo opcional y acotado cuando una capacidad concreta lo justifique.
+Use only the role authorized by the active Work Item.
 
-Ese rol externo puede ser, según evidencia:
+An Implementer MUST NOT:
+- self-approve;
+- expand Objective, Semantic Scope, or Path Scope;
+- infer merge authority;
+- infer publication authority;
+- modify a workflow merely because an improvement appears useful.
 
-- otra IA con acceso a un repositorio/local sandbox;
-- una IA con acceso a servicios/plataformas de Google;
-- una herramienta o aplicación externa;
-- otro operador especializado.
+A Supervisor independently reviews exact SHA and may issue only:
+- `SEMANTIC_ACCEPTED`;
+- `REWORK`;
+- `HOLD`;
+- `ESCALATE`.
 
-Nunca debe incluirse un actor externo sólo por simetría con workflows anteriores. Debe existir una capacidad concreta, un límite de autoridad y una justificación verificable.
+## Platform selection
 
-## Fuente histórica
+Android:
+- `workflows/ANDROID_WORKFLOW.md`
+- for Unity/Game Android work, additionally `workflows/ANDROID_UNITY_GAME_PROFILE.md` when explicitly activated.
 
-Usar como antecedente de gobierno el workflow canónico de:
+iOS:
+- `workflows/IOS_WORKFLOW.md`
 
-- repository: `cmiloarevalo-hash/G_INF_01`
-- file: `WORKFLOW_CANONICO_SUPERVISOR_GITHUB_IMPLEMENTADOR_AI_STUDIO.md`
+Web:
+- `workflows/WEB_WORKFLOW.md`
 
-No copiar mecánicamente sus elementos específicos de web, Google AI Studio, Firebase, npm u otras plataformas.
+Workflow maintenance:
+- also read `workflows/WORKFLOW_DOCUMENT_CONTRACT.md`.
 
-## Principios operativos
+## Core invariants
 
-1. Un Work Item define el objetivo y alcance.
-2. El repositorio y los comentarios del Issue son memoria persistente.
-3. Cada afirmación técnica actual debe distinguir entre:
-   - hecho del proyecto;
-   - hecho externo verificado;
-   - inferencia;
-   - recomendación;
-   - incertidumbre.
-4. Para decisiones susceptibles de cambio, activar investigación actual.
-5. Priorizar fuentes oficiales/primarias.
-6. Usar foros y comunidad internacional como evidencia complementaria, no como sustituto de fuentes oficiales cuando éstas existen.
-7. Mantener tareas y fases acotadas.
-8. Persistir checkpoints antes de cambiar de fase o cuando el contexto pueda agotarse.
-9. Si una sesión se pierde, reconstruir únicamente desde GitHub.
-10. Tests, métricas y scores son evidencia, no aprobación.
-11. No inventar estadísticas. Distinguir medición empírica de scoring analítico.
-12. No declarar una propuesta “mejor” por intuición: justificar criterios, pesos, evidencia y sensibilidad del resultado.
+- `MEJORA = BASELINE FUNCIONAL + ADAPTACIÓN JUSTIFICADA`
+- `GITHUB STATE > SESSION MEMORY`
+- `TECHNICAL CAPABILITY != WORKFLOW AUTHORITY`
+- `LOCAL CAPABILITY != WORKFLOW AUTHORITY` when a Local Execution Agent is used
+- `PATH PERMISSION != SEMANTIC PERMISSION`
+- `CI/TEST PASS != SEMANTIC_ACCEPTED`
+- `SEMANTIC_ACCEPTED != MERGE_ELIGIBLE`
+- `PUBLISH = HUMAN ACTION`
+- `PERSISTENCE != BLIND START`
+- `WORKFLOW IMPROVEMENT CANDIDATE != WORKFLOW CHANGE AUTHORITY`
 
-## Recomendaciones OpenAI que deben incorporarse y verificarse
+## Workflow changes
 
-El programa debe contrastar continuamente las prácticas vigentes de OpenAI para agentes de programación, incluyendo cuando correspondan:
+A possible workflow improvement is not implementation authority.
 
-- tareas bien delimitadas y estructuradas como Issues;
-- planificación antes de implementación para cambios grandes;
-- contexto persistente conciso mediante `AGENTS.md` y documentación del repositorio;
-- sandboxing y límites explícitos;
-- approvals/gates para operaciones de mayor riesgo;
-- evidencia y telemetría/auditoría;
-- iteración y verificación automatizada;
-- exploración Best-of-N / múltiples candidatos cuando aporta valor;
-- durable project memory para tareas de largo horizonte;
-- reducción de contexto irrelevante y progressive disclosure;
-- separación entre capacidad técnica y autoridad del workflow.
+Use the platform/Contract maintenance path:
 
-No congelar estas recomendaciones: verificar documentación vigente cuando sean materialmente relevantes.
+`IMPROVEMENT_CANDIDATE → Human decision → bounded WORKFLOW_CHANGE_UNIT → implementation/research as authorized → exact-SHA Supervisor review`.
 
-## Bucle obligatorio por plataforma
+A new Android engine/toolchain specialization must first be classified. Project-specific behavior remains project specification; only reusable operational deltas justified as a subordinate profile enter Android profile governance.
 
-Para Android, iOS y Web ejecutar:
+## Baseline and provenance
 
-```text
-RESEARCH
-→ CANDIDATE 1
-→ CHECKPOINT
-→ CANDIDATE 2
-→ CHECKPOINT
-→ CANDIDATE 3
-→ CHECKPOINT
-→ COMPARATIVE EVALUATION
-→ CHECKPOINT
-→ CANDIDATE 4 / PRESENTATION PROPOSAL
-→ CHECKPOINT
-→ READY_FOR_SUPERVISOR_REVIEW
-```
+`references/**` is frozen reference material.
 
-### Candidate 1
-Una solución deliberadamente simple/minimalista.
+`REFERENCES_WRITES = FORBIDDEN` unless a future explicit authority changes that repository rule.
 
-### Candidate 2
-Una solución orientada a portabilidad, independencia de proveedor y recuperación entre sesiones/agentes.
+Historical Issue #2/Issue #8 research, matrices, ADRs, reports, and handoffs are provenance/evidence. They are not normal execution dependencies.
 
-### Candidate 3
-Una solución orientada a verificación, automatización, seguridad y trabajo persistente de largo horizonte.
+## Package status
 
-Las etiquetas anteriores son puntos de partida, no conclusiones. Si la investigación demuestra que otra separación produce candidatos más independientes y útiles, documentar y justificar el cambio antes de generarlos.
+The files under `workflows/` on the final-package candidate branch remain a candidate until a separate authorized canonical-adoption/integration decision is persisted.
 
-### Comparative Evaluation
-
-Evaluar al menos:
-
-- adherencia a recomendaciones oficiales de la plataforma;
-- compatibilidad con recomendaciones OpenAI para coding agents;
-- reproducibilidad;
-- independencia del proveedor;
-- capacidad de ejecución en sandbox local;
-- capacidad de ejecución en sandbox cloud;
-- CI;
-- testabilidad;
-- seguridad;
-- control de secrets;
-- trazabilidad;
-- recuperación de contexto;
-- mantenibilidad;
-- complejidad operacional;
-- costo;
-- restricciones de distribución/publicación;
-- capacidad para incorporar actores externos opcionales;
-- riesgo de vendor lock-in.
-
-Definir pesos explícitos antes de puntuar.
-
-Cuando existan datos cuantitativos reales, citarlos.
-Cuando no existan, usar un score analítico y marcarlo explícitamente como tal.
-
-Ejecutar análisis de sensibilidad: explicar si pequeños cambios en los pesos alteran materialmente la conclusión.
-
-### Candidate 4
-
-No es simplemente el candidato con mayor score.
-
-Debe sintetizar las mejores propiedades verificadas de 1–3 y resolver las debilidades identificadas.
-
-Debe quedar listo como **propuesta para revisión/presentación**, pero no se considera canónico hasta decisión del Supervisor/Humano.
-
-## Checkpoint obligatorio
-
-Al final de cada fase escribir un comentario en el Issue correspondiente:
-
-```text
-CHECKPOINT
-WORK ITEM: #...
-PLATFORM: ANDROID | IOS | WEB | CROSS-PLATFORM
-PHASE: ...
-STATUS: PASS | INCOMPLETE | BLOCKED
-
-COMPLETED:
-- ...
-
-EVIDENCE:
-- ...
-
-DECISIONS/INFERENCES:
-- ...
-
-RISKS/UNCERTAINTIES:
-- ...
-
-NEXT ACTION:
-- ...
-
-CONTEXT RECOVERY:
-- archivos/issues/comentarios que una nueva sesión debe leer
-```
-
-Nunca depender de “recordar” una fase anterior.
-
-## Handoff final
-
-Cada actividad termina únicamente con:
-
-```text
-WORK ITEM: #...
-PLATFORM: ...
-RESEARCH: PASS | INCOMPLETE | BLOCKED
-CANDIDATE 1: COMPLETE | INCOMPLETE
-CANDIDATE 2: COMPLETE | INCOMPLETE
-CANDIDATE 3: COMPLETE | INCOMPLETE
-COMPARISON: COMPLETE | INCOMPLETE
-CANDIDATE 4: COMPLETE | INCOMPLETE
-STATE: READY_FOR_SUPERVISOR_REVIEW | BLOCKED
-```
-
-El agente deja el resultado en GitHub y devuelve control al Supervisor.
-
-
-## Baseline protection
-
-Before working on any platform Work Item, read:
-
-- `references/README.md`
-- `references/WORKFLOW_BASE_ORIGINAL.md` only when baseline comparison is required.
-
-The baseline is frozen reference material.
-
-```text
-BASELINE_REFERENCE = references/WORKFLOW_BASE_ORIGINAL.md
-BASELINE_WRITES = FORBIDDEN
-REFERENCES_WRITES = FORBIDDEN
-SOURCE_REPOSITORY_WRITES = FORBIDDEN
-```
-
-The Implementer may analyze, quote, classify and compare the baseline, but may not edit it or treat candidate proposals as amendments to it.
-
-All new workflow proposals must live outside `references/**` and must be clearly labeled `CANDIDATE`, `PROPOSAL` or `DRAFT` until Supervisor review.
-
-If any instruction appears to require modifying the baseline:
-
-```text
-STOP
-→ BLOCKED/ESCALATE
-→ Supervisor
-```
+Package existence or semantic acceptance does not itself authorize merge or canonical adoption.
