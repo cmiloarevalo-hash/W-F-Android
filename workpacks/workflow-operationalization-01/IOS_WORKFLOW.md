@@ -3156,6 +3156,231 @@ Accepted evidence used conceptually includes:
 
 ---
 
+---
+
+## 37. Workflow startup, freshness, and bounded maintenance
+
+This section applies the common startup/maintenance discipline from the Workflow Document Contract while preserving this standalone iOS workflow's existing lifecycle and platform boundaries.
+
+### 37.1 Workflow Source Registry
+
+The registry is navigation/evidence metadata. It does not create authority and does not freeze volatile external facts.
+
+Registry established: 2026-10-01.
+Initial next lightweight freshness review: 2026-10-15, or earlier when a material volatile fact is triggered.
+
+| SOURCE_ID | SUBJECT | SOURCE_REF_OR_URL | SOURCE_TYPE | AUTHORITY_LEVEL | VERSION_OR_DATE_SCOPE | LAST_CHECKED | VOLATILITY | LAST_FINDING | NEXT_REVIEW | NOTES |
+|---|---|---|---|---|---|---|---|---|---|---|
+| IOS_INTERNAL_ARCH | Workflow Contract + accepted architecture | repository path / exact current SHA | INTERNAL_ACCEPTED | governing architecture | current repository state | 2026-10-01 | LOW | registry established | 2026-10-15 | Recheck exact SHA at use |
+| IOS_BASELINE_EVIDENCE | Accepted iOS evidence/provenance | Issue #2 accepted evidence refs from Appendix B | INTERNAL_ACCEPTED | evidence/provenance | accepted historical scope | 2026-10-01 | LOW | reusable; no broad rediscovery | ON_CHANGE | Not normal execution dependency |
+| APPLE_DEVELOPER_DOCS | Xcode/iOS/platform technical facts | https://developer.apple.com/documentation/ | OFFICIAL_EXTERNAL | primary technical source | current-at-check only | 2026-10-01 registry established | HIGH | no volatile fact frozen here | 2026-10-15 | Target only material subjects |
+| APP_STORE_GUIDELINES | App Store review/policy facts | https://developer.apple.com/app-store/review/guidelines/ | OFFICIAL_EXTERNAL | primary policy source | current-at-check only | 2026-10-01 registry established | HIGH | no volatile fact frozen here | 2026-10-15 | Check only when materially relevant |
+| PROJECT_IOS_SOURCES | Project-specific Xcode/toolchain/signing/specs | Work Item + project configuration/docs | PROJECT_SPECIFIC | project authority/evidence | per Work Item | AT_USE | VARIABLE | cannot be globally frozen | AT_USE | Includes Xcode/SDK/signing/device facts when material |
+
+Rules:
+
+- prefer official/primary sources for volatile platform/tool/policy facts;
+- use accepted repository evidence by exact SHA/path when material;
+- project-specific sources cannot be globally frozen and are resolved from the active Work Item/project;
+- do not duplicate full source documents into this Workflow;
+- reuse adequate accepted evidence; do not broadly rediscover it without a trigger.
+
+### 37.2 Lightweight freshness check
+
+At Supervisor startup/use for substantial work:
+
+`WORKFLOW IDENTITY → SOURCE REGISTRY → LAST WORKFLOW FRESHNESS REVIEW → DUE CHECK → PROJECT/SPECIFICATION READINESS → CAPABILITY/ACTOR PLAN → SESSION PREPARATION → IMPLEMENTATION BOOTSTRAP`.
+
+`14 DAYS SINCE LAST FRESHNESS REVIEW → LIGHTWEIGHT FRESHNESS CHECK, NOT AUTOMATIC FULL RESEARCH`.
+
+A targeted freshness result may record:
+
+~~~text
+WORKFLOW_FRESHNESS_RESULT
+
+WORKFLOW:
+WORKFLOW_SHA:
+CHECKED_AT:
+PREVIOUS_CHECK:
+SOURCES_CHECKED:
+UNCHANGED:
+CHANGED:
+UNAVAILABLE:
+MATERIAL_CHANGE_FOUND:
+IMPROVEMENT_CANDIDATE:
+LIMITATIONS:
+NEXT_REVIEW:
+OUTCOME:
+CURRENT_ENOUGH |
+MATERIAL_CHANGE_REVIEW_REQUIRED |
+SOURCE_UNAVAILABLE |
+WORKFLOW_IMPROVEMENT_CANDIDATE
+~~~
+
+These are evidence/preflight outcomes only.
+
+A due check inspects only registered sources relevant to current volatile assumptions. It must not become a full research cycle by default.
+
+### 37.3 Workflow improvement authorization
+
+`WORKFLOW_IMPROVEMENT_CANDIDATE != WORKFLOW CHANGE AUTHORITY`.
+
+Required flow:
+
+`IMPROVEMENT_CANDIDATE → persist evidence/rationale → inform Human → AUTHORIZE | DECLINE | DEFER`.
+
+Only Human-authorized change proceeds as one bounded `WORKFLOW_CHANGE_UNIT`.
+
+~~~text
+WORKFLOW_CHANGE_UNIT
+
+CHANGE_ID:
+TARGET_WORKFLOW:
+AUTHORITY:
+BASE_SHA:
+TRIGGER:
+OBJECTIVE:
+CHANGE_TYPE:
+FIX | IMPROVEMENT | EXTENSION | DEPRECATION
+AFFECTED_SECTIONS:
+AFFECTED_INVARIANTS:
+AFFECTED_PROFILES:
+AFFECTED_TRACE_ROWS:
+MATERIAL_SOURCES:
+EXPECTED_DELTA:
+NON_AFFECTED_AREAS:
+AUTHORIZED_PATHS:
+REQUIRED_LOCAL_REVIEW:
+REQUIRED_GLOBAL_CHECKS:
+VERIFICATION:
+STOP_CONDITIONS:
+RESULTING_SHA:
+STATE:
+~~~
+
+No Workflow self-modification is authorized by a freshness finding alone.
+
+### 37.4 Proportional Workflow review
+
+Default review:
+
+`WORKFLOW_CHANGE_UNIT → exact diff → deep review of affected surface/dependencies → verify affected evidence → minimum global-invariant checks → exact-SHA Supervisor decision`.
+
+Minimum global checks preserve, as applicable:
+
+- authority model;
+- exact-SHA semantics;
+- Work Item / Semantic Scope / Path Scope;
+- formal semantic-decision vocabulary;
+- REWORK/current-decision behavior;
+- merge/publication boundaries;
+- session recovery;
+- source precedence;
+- baseline trace completeness;
+- internal references;
+- active profile relationships;
+- no unauthorized path/scope expansion.
+
+Expand to broader/full review when impact cannot be bounded confidently or materially affects the Contract/shared architecture, authority, state vocabulary, source precedence, baseline adaptation classification, merge/publication semantics, or multiple unrelated Workflow regions.
+
+### 37.5 Project/specification startup readiness
+
+Before substantial product/application implementation, determine only material readiness:
+
+- current project/product specifications;
+- executable Objective/Acceptance Criteria;
+- normative-document consistency/currentness;
+- unresolved product decisions;
+- material technical unknowns;
+- volatile facts;
+- credentials/accounts/cost;
+- local/device/external capability;
+- expected evidence;
+- recovery/checkpoint viability.
+
+Routing:
+
+- PRODUCT/HUMAN DECISION REQUIRED → return to Human; do not research product intent as a technical substitute.
+- MATERIAL TECHNICAL UNKNOWN → persist the exact question and propose bounded research when necessary.
+- MISSING/AMBIGUOUS MATERIAL SPECIFICATION → STOP substantial implementation under the existing specification/document-consistency rules.
+
+A research recommendation is not research authority. Nontrivial research requires explicit authorization. The routine lightweight freshness check does not require a separate research activity unless it exposes a material question requiring deeper investigation.
+
+### 37.6 Capability and session plan
+
+Before substantial execution determine only applicable needs:
+
+~~~text
+CAPABILITY_PLAN
+
+PRIMARY_IMPLEMENTER_REQUIRED:
+LOCAL_EXECUTION_AGENT_REQUIRED:
+PHYSICAL_DEVICE_REQUIRED:
+EXTERNAL_SERVICE_REQUIRED:
+CREDENTIAL_REQUIRED:
+PAID_SERVICE_REQUIRED:
+OTHER_SPECIAL_CAPABILITY:
+ACTIVATE_NOW:
+DEFER_UNTIL_TRIGGER:
+~~~
+
+`CAPABILITY REQUIRED != AUTHORITY GRANTED`.
+
+Optional session planning:
+
+~~~text
+SESSION_PLAN
+
+SUPERVISOR_SESSION:
+IMPLEMENTER_SESSION:
+LOCAL_AGENT_SESSION:
+OTHER_ACTOR:
+ACTIVATE_NOW:
+DEFER_UNTIL_TRIGGER:
+AUTHORITY_REF:
+EXPECTED_HANDOFF:
+~~~
+
+Create/activate only actors actually required. Future-needed capability may be recorded without activation. New sessions recover from GitHub pointers, not transcript dependence.
+
+### 37.7 Platform adaptation
+
+iOS adaptation:
+- use iOS/macOS/Xcode-specific volatile source categories and capabilities only;
+- do not import Android/Unity mechanics;
+- Simulator, physical-device, signing, provisioning, TestFlight/App Store facts activate only when material to the Work Item;
+- current Apple/Xcode facts remain freshness-gated rather than hard-coded.
+
+### 37.8 Anti-bottleneck rules
+
+Do not make these defaults:
+
+- full external research every 14 days;
+- rereading every registered source on every use;
+- full repository documentation audit;
+- full Workflow semantic rereview for every localized edit;
+- activating every possible actor at startup;
+- creating device/local-agent sessions before trigger;
+- research "just in case";
+- duplicating source contents into the Workflow;
+- automatic Workflow modification after a freshness finding.
+
+Prefer:
+
+`REGISTERED SOURCES → TARGETED CHECK → DELTA`
+
+`BOUNDED CHANGE UNIT → IMPACT SURFACE → MINIMUM GLOBAL CHECKS`
+
+Core maintenance invariants:
+
+`WORKFLOW IMPROVEMENT CANDIDATE != WORKFLOW CHANGE AUTHORITY`
+
+`HUMAN AUTHORIZATION → WORKFLOW_CHANGE_UNIT`
+
+`LOCAL CHANGE → LOCAL DEEP REVIEW + GLOBAL INVARIANT CHECK`
+
+`14 DAYS → FRESHNESS CHECK, NOT AUTOMATIC FULL RESEARCH`
+
 # Result
 
 This workflow operationalizes iOS using the full inherited lifecycle plus justified iOS adaptation.
