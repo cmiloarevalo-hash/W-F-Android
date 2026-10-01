@@ -588,3 +588,38 @@ Accepted parent state:
 84172391dce91e9aa14d433b4859ae6f8f5bac0c
 
 This contract does not implement Android/iOS/Web workflows and does not authorize merge, canonical adoption, or product publication.
+
+
+## 18. Workflow startup, freshness, and bounded maintenance
+
+Every standalone workflow MUST keep an internal Workflow Source Registry so freshness review starts from known material sources instead of broad rediscovery. Minimum source record:
+
+SOURCE_ID; SUBJECT; SOURCE_REF_OR_URL; SOURCE_TYPE; AUTHORITY_LEVEL; VERSION_OR_DATE_SCOPE; LAST_CHECKED; VOLATILITY; LAST_FINDING; NEXT_REVIEW; NOTES.
+
+Prefer official/primary sources for volatile facts. Accepted repository evidence may use exact SHA/path. Registry metadata is navigation/evidence, not authority. Distinguish stable/internal, volatile/external, and project-specific sources. Do not duplicate full external documents.
+
+At startup for substantial work:
+
+WORKFLOW IDENTITY → SOURCE REGISTRY → LAST_WORKFLOW_FRESHNESS_REVIEW → DUE CHECK → PROJECT/SPECIFICATION READINESS → CAPABILITY/ACTOR PLAN → SESSION PREPARATION → IMPLEMENTATION BOOTSTRAP.
+
+14 DAYS SINCE LAST FRESHNESS REVIEW → LIGHTWEIGHT FRESHNESS CHECK, NOT AUTOMATIC FULL RESEARCH.
+
+The targeted check records sources checked, unchanged/changed/unavailable facts, material-change finding, improvement candidate, limitations, and next review. Outcomes are CURRENT_ENOUGH / MATERIAL_CHANGE_REVIEW_REQUIRED / SOURCE_UNAVAILABLE / WORKFLOW_IMPROVEMENT_CANDIDATE. These are evidence/preflight states only.
+
+WORKFLOW_IMPROVEMENT_CANDIDATE != WORKFLOW CHANGE AUTHORITY. Required flow:
+
+IMPROVEMENT_CANDIDATE → persist rationale → inform Human → Human AUTHORIZE | DECLINE | DEFER → if authorized create one bounded WORKFLOW_CHANGE_UNIT → implementation/research as authorized → exact-SHA Supervisor review.
+
+A WORKFLOW_CHANGE_UNIT records at minimum change ID, target workflow, authority, base SHA, trigger, objective, type, affected sections/invariants/profiles/trace rows, material sources, expected delta, non-affected areas, authorized paths, local/global review, verification, stop conditions, resulting SHA, and state.
+
+Default review is proportional: exact diff → deep review of affected surface/dependencies → affected evidence verification → minimum global-invariant checks → exact-SHA decision. Global checks preserve authority, exact-SHA, Work Item/scopes, decision vocabulary, REWORK/current-decision behavior, merge/publication boundaries, recovery, source precedence, baseline trace, internal references, active profiles, and path/scope boundaries. Expand to broader/full review when impact cannot be bounded or materially affects shared architecture/Contract, authority, state vocabulary, source precedence, adaptation classification, merge/publication semantics, or multiple unrelated regions.
+
+Before substantial product/application implementation verify current specifications, executable Objective/Acceptance Criteria, normative-document consistency, unresolved product decisions, material technical unknowns, volatile facts, credentials/cost, required local/device/external capability, expected evidence, and recovery viability. Product/Human decisions return to Human. Missing/ambiguous material specification stops substantial implementation under current gap rules.
+
+A material technical unknown may produce a bounded research recommendation; recommendation != research authority. Nontrivial research begins only after explicit Human authorization. The routine lightweight freshness check itself needs no separate research activity unless it exposes a material question requiring deeper investigation.
+
+Capability/session planning is proportional. Record whether Implementer, Local Execution Agent, physical device, external service, credential, paid service, or another special capability is required. CAPABILITY REQUIRED != AUTHORITY GRANTED. Activate only actors needed now; future capabilities may be FORESEEN and deferred. GitHub pointers, not transcript dependence, carry durable context.
+
+Reject as defaults: full external research every 14 days; rereading every source on every use; full repository documentation audit; full-workflow rereview for every localized edit; activating every actor at startup; premature Local Agent/device sessions; research just in case; duplicating source contents; automatic workflow modification after freshness findings.
+
+Prefer REGISTERED SOURCES → TARGETED CHECK → DELTA and BOUNDED CHANGE UNIT → IMPACT SURFACE → MINIMUM GLOBAL CHECKS.
