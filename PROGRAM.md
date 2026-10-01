@@ -1,142 +1,183 @@
-# Programa de diseño comparativo de workflows — Android, iOS y Web
+# Programa de workflows operacionales — Android, iOS y Web
 
 ## Propósito
 
-Este repositorio contiene un programa persistente para diseñar y contrastar tres workflows de ingeniería asistida por agentes:
-
+Este repositorio mantiene un programa persistente para producir workflows operacionales standalone de ingeniería asistida por agentes para:
 - Android;
-- iPhone / iOS;
-- Aplicaciones web.
+- iOS;
+- Web.
 
-La ejecución debe sobrevivir cambios de sesión y agotamiento de contexto mediante Issues, comentarios, documentos y evidencia en GitHub.
+El objetivo vigente no es generar propuestas cortas. Es adaptar el Workflow funcional original con pérdida cero de función operativa y sólo con deltas justificados por plataforma.
+
+## Estado del programa
+
+### Issue #2 — fase comparativa completada
+
+Issue #2 realizó:
+Research Gate → Candidate 1–3 → comparative evaluation → Candidate 4 → síntesis transversal → adversarial verification → final proposal package.
+
+Resultado:
+- evidencia Android/iOS/Web aceptada;
+- Common Core aceptado;
+- deltas de plataforma aceptados;
+- actor externo durable aceptado;
+- nueve garantías + HARD VETO preservados;
+- parent final revisado: 84172391dce91e9aa14d433b4859ae6f8f5bac0c.
+
+La fase comparativa queda histórica/completada.
+No es obligatoria para Issue #8.
+
+### Issue #8 — fase de operacionalización vigente
+
+Método:
+
+ARCHITECTURE CONTRACT
+→ PLATFORM BASELINE ADAPTATION MATRIX
+→ STANDALONE PLATFORM WORKFLOW
+→ exact-SHA SUPERVISOR REVIEW
+→ focused REWORK only if needed
+
+Android es el primer exemplar.
+iOS y Web se producen después de validar la arquitectura documental con Android.
+
+## Arquitectura documental mínima
+
+Antes de construir un platform workflow deben existir y estar revisados:
+1. Workflow Document Contract.
+2. Baseline Adaptation Matrix de la plataforma.
+3. ADR de arquitectura documental cuando corresponda.
+
+El platform workflow final debe poder consumirse sin reconstruir Issue #2.
+
+## Principio de adaptación
+
+MEJORA = BASELINE FUNCIONAL + ADAPTACIÓN JUSTIFICADA
+
+Cada sección/subsección del baseline:
+PRESERVE / ADAPT / EXTEND / NOT_APPLICABLE_WITH_JUSTIFICATION.
+
+No silent omission.
+Lossless derivation is mandatory.
 
 ## Roles
 
-### Humano
-Define intención, prioridades, límites, permisos, costes aceptables y decisiones excepcionales.
+### Human
+Define intención, prioridades, decisiones materiales de producto/scope, credenciales/permisos, costes/proveedores y publicación de producto.
+
+PUBLISH = HUMAN ACTION.
 
 ### Supervisor
-Chat Web GPT.
+- crea/delimita Work Items;
+- define verificación;
+- revisa evidencia y exact HEAD;
+- emite SEMANTIC_ACCEPTED / REWORK / HOLD / ESCALATE;
+- verifica MERGE_ELIGIBLE separadamente;
+- no convierte CI/test PASS en aprobación.
 
-Responsabilidades:
+### Implementer / Technical Researcher
+- recupera contexto acotado;
+- ejecuta sólo scope autorizado;
+- implementa/verifica/revisa diff;
+- persiste commit/PR/evidencia/handoff cuando esté autorizado;
+- no se autoaprueba;
+- no expande scope/authority;
+- se detiene ante mismatch material.
 
-- crear/delimitar Work Items;
-- revisar evidencia;
-- contrastar investigación material;
-- revisar comparaciones y scores;
-- detectar sobreingeniería, sesgo o conclusiones sin evidencia;
-- emitir REWORK / HOLD / ESCALATE / SEMANTIC_ACCEPTED cuando corresponda;
-- decidir si una propuesta está lista para presentación.
+### External actor
+Opcional y acotado por capability.
+Cada invocación persiste actividad GitHub durable:
+request → authority → execution → evidence → result → stop/escalation.
 
-### Agente implementador / investigador
-Ejecuta la investigación y producción de candidatos.
+TECHNICAL CAPABILITY != WORKFLOW AUTHORITY.
 
-No ejerce autoridad de Supervisor.
+### GitHub / CI
+Sistemas de persistencia/evidencia.
+No autoridad semántica.
 
-### Actor externo opcional
-No existe uno obligatorio.
+## Source precedence
 
-Un workflow puede reservar un punto de extensión para un actor adicional únicamente cuando haya una función verificable que no convenga asignar al Implementador/Supervisor/CI.
+1. current Work Item Human/Supervisor authority;
+2. frozen functional baseline;
+3. accepted Issue #2 Common Core/non-regression;
+4. accepted Issue #2 platform evidence/deltas;
+5. summaries.
 
-Debe documentarse:
+A summary cannot weaken normative behavior.
 
-- capability;
-- preconditions;
-- permissions;
-- forbidden actions;
-- evidence returned;
-- stop conditions;
-- escalation path.
+## Research / freshness
 
-## Modelo de trabajo
+Issue #2 is the accepted evidence library.
 
-Cada plataforma pasa por seis etapas:
+Do not repeat broad comparative research during operationalization.
 
-1. Research Gate.
-2. Candidate 1.
-3. Candidate 2.
-4. Candidate 3.
-5. Comparative evaluation.
-6. Candidate 4 — propuesta de presentación.
+Fresh research occurs only for a concrete current material fact when accepted evidence may be stale.
 
-Cada etapa produce un comentario/checkpoint persistente.
+Prefer official/primary sources.
+Persist strategic rationale for material choices.
+Scores/metrics remain evidence, not approval.
 
-## Fuentes
+## Platform production loop
 
-### Primera prioridad
-- OpenAI Developers / OpenAI Engineering para prácticas de coding agents.
-- Documentación oficial de la plataforma:
-  - Android Developers / Google Play para Android.
-  - Apple Developer para iOS.
-  - estándares web y documentación oficial de frameworks/herramientas seleccionadas para Web.
-- GitHub Docs para CI, Actions, repositorios, permisos y branch protections.
-- documentación oficial de lenguajes/build systems.
+For each platform after architecture approval:
 
-### Segunda prioridad
-Comunidad técnica internacional:
-- GitHub Issues/Discussions de proyectos oficiales;
-- Stack Overflow;
-- Hacker News;
-- Reddit técnico especializado;
-- foros oficiales de proveedores;
-- ingeniería publicada por compañías con implementación verificable.
+1. BUILD
+- one bounded persistent task;
+- complete standalone workflow;
+- handoff;
+- STOP.
 
-La comunidad sirve para descubrir problemas reales, experiencia operacional y puntos de fricción. Las afirmaciones de capacidad, seguridad, compatibilidad, precio o requisitos deben contrastarse con fuentes primarias cuando existan.
+2. SUPERVISOR REVIEW
+- independent exact-SHA/content review;
+- PASS closes/accepts when authorized;
+- otherwise one focused REWORK.
 
-## Evidencia cuantitativa y scoring
+3. OPTIONAL THIRD PASS
+- only unresolved defects;
+- architecture defect returns to architecture review instead of being patched independently per platform.
 
-No llamar “estadística” a una opinión numérica.
+Normal expectation: BUILD + REVIEW, with REWORK only when evidence requires it.
 
-La evaluación puede contener tres clases distintas:
+## Definition of Done
 
-1. **Datos observados**: medidas obtenidas realmente en pruebas/repo/CI.
-2. **Datos externos**: cifras publicadas por fuentes verificables.
-3. **Score analítico**: valoración construida por el agente con una rúbrica explícita.
+A platform workflow is complete only if it passes:
+- 100% baseline coverage;
+- standalone operation;
+- complete Human→Work Item→Implementer→verification→handoff→review→REWORK/HOLD/ESCALATE→integration→publication-boundary lifecycle;
+- role/authority safety;
+- exact-SHA review semantics;
+- recovery for Implementer and Supervisor;
+- external-actor durability;
+- research/freshness gate;
+- platform-specific build/test/device/browser/signing/distribution semantics;
+- executable templates/checklists;
+- accepted-evidence provenance;
+- HARD VETO non-regression;
+- summary-regression test.
 
-Para Candidate 1–3:
+## Historical methodology — retained, not mandatory
 
-- definir criterios y pesos antes de la puntuación;
-- usar escala común;
-- justificar cada valor;
-- separar datos reales de scores analíticos;
-- hacer análisis de sensibilidad;
-- no elegir Candidate 4 sólo por promedio ponderado.
+Candidate 1–4/scoring/sensitivity methodology remains valid provenance for Issue #2.
 
-## Entregables por plataforma
+It can be reactivated only by a later explicit Work Item when genuinely new comparative research is needed.
 
-- mapa de recomendaciones oficiales;
-- mapa de recomendaciones OpenAI;
-- hallazgos de comunidad;
-- Candidate 1;
-- Candidate 2;
-- Candidate 3;
-- tabla comparativa;
-- evidencia cuantitativa disponible;
-- score analítico;
-- riesgos;
-- análisis de sensibilidad;
-- Candidate 4;
-- preguntas para Supervisor/Humano.
+It is not the default production cycle for Issue #8.
 
-## Entregable transversal
+## Current delivery order
 
-Después de completar Android, iOS y Web:
+1. Architecture adoption package.
+2. Android standalone workflow.
+3. Architecture-conformance check.
+4. iOS standalone workflow.
+5. Web standalone workflow.
 
-- identificar un núcleo común de gobierno;
-- identificar diferencias inevitables por plataforma;
-- comparar mecanismos de sandbox/CI/test/release;
-- proponer una interfaz común para actores externos opcionales;
-- verificar que no se fuerce una abstracción artificial entre plataformas;
-- producir un paquete de presentación con los tres Candidate 4.
+Each platform completes/accepts before moving to the next unless Supervisor/Human explicitly changes the sequence.
 
-## Condición de finalización
+## Authority boundaries
 
-El programa termina cuando:
+SEMANTIC_ACCEPTED != MERGE_ELIGIBLE.
+PATH PERMISSION != SEMANTIC PERMISSION.
+CI/TEST PASS != SEMANTIC_ACCEPTED.
+TECHNICAL CAPABILITY != WORKFLOW AUTHORITY.
+PUBLISH = HUMAN ACTION.
 
-- las tres actividades de plataforma están `READY_FOR_SUPERVISOR_REVIEW`;
-- la síntesis transversal está completa;
-- todas las afirmaciones actuales materialmente importantes tienen fuente;
-- los scores están claramente diferenciados de estadísticas empíricas;
-- el agente ha persistido el handoff final en GitHub.
-
-La respuesta en chat no sustituye estos artefactos.
+Merge, canonical adoption and product publication require the governing authority; technical completion alone never grants them.
