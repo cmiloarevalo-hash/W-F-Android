@@ -1069,6 +1069,28 @@ Rules:
 
 `PROFILE ACTIVATION != NEW WORKFLOW AUTHORITY`.
 
+### 10.6 Other specialized Android profiles
+
+Android may support additional specialized operational profiles when a reusable Android subdomain, toolchain, engine, or execution environment needs bounded operational rules that do not belong in the universal Android baseline.
+
+A specialized profile MUST be explicitly registered and semantically accepted under its governing authority before normal Work Items may activate it.
+
+Use:
+
+`ANDROID_WORKFLOW + 0..N EXPLICITLY ACTIVATED ACCEPTED SPECIALIZED PROFILES + CURRENT PROJECT SPECIFICATIONS`.
+
+Rules:
+
+- zero profiles is valid; ordinary Android work remains governed by this document alone;
+- a profile extends this Workflow and MUST NOT replace or override it;
+- an unregistered or unaccepted profile candidate MUST NOT be activated by inference;
+- project-specific requirements MUST NOT be promoted to profile rules merely because they are important to one project;
+- multiple profiles MAY be activated only when the Work Item explicitly identifies them and their combined normative instructions pass the document-consistency gate;
+- `MULTIPLE PROFILES != AUTOMATIC COMPOSITION`;
+- a material profile conflict is STOP and returns to Supervisor/Human authority as applicable.
+
+Section 38 defines candidate intake, qualification, authorization, registry, maintenance, and acceptance tests.
+
 ---
 
 ## 11. Android environment contract
@@ -3364,6 +3386,271 @@ Core maintenance invariants:
 `LOCAL CHANGE → LOCAL DEEP REVIEW + GLOBAL INVARIANT CHECK`
 
 `14 DAYS → FRESHNESS CHECK, NOT AUTOMATIC FULL RESEARCH`
+
+## 38. Android specialized profile extension model
+
+This section generalizes the operational lesson proven by the accepted Unity/Game profile without making Unity/Game mechanics universal Android requirements.
+
+The Android Workflow remains the standalone governing base.
+
+Specialized profiles exist only to add reusable operational deltas for a materially distinct Android project/toolchain class while preserving the authority, lifecycle, scope, exact-SHA, review, merge, publication, and recovery semantics of this document.
+
+### 38.1 Candidate intake and classification
+
+When new material is proposed for Android, the Supervisor MUST classify it before treating it as a Workflow/profile change.
+
+Use:
+
+~~~text
+ANDROID_EXTENSION_CANDIDATE_INTAKE
+
+CANDIDATE_ID:
+PROPOSER / SOURCE:
+TARGET_DOMAIN:
+TRIGGER:
+PROPOSED_DELTA:
+WHY_ANDROID_BASE_IS_INSUFFICIENT:
+REUSABLE_ACROSS_PROJECTS / WORK_ITEMS:
+PROJECT_SPECIFIC_CONTENT_EXCLUDED:
+VOLATILE_FACTS / RESEARCH_DEPENDENCIES:
+AUTHORITY_IMPACT:
+EXPECTED_ARTIFACT_FORM:
+
+SUPERVISOR_CLASSIFICATION:
+PROJECT_SPECIFICATION |
+WORKFLOW_IMPROVEMENT |
+ANDROID_PROFILE_CANDIDATE |
+RESEARCH_REQUIRED |
+NOT_REQUIRED
+
+RATIONALE:
+NEXT_AUTHORITY / ACTION:
+~~~
+
+Classification rules:
+
+- `PROJECT_SPECIFICATION` — concrete product/project requirements, targets, scenes, budgets, mechanics, UX, supported devices, or other project-owned intent. Keep them in current project specifications/Work Items.
+- `WORKFLOW_IMPROVEMENT` — a reusable change to universal Android operation. Route through section 37.3 and a Human-authorized `WORKFLOW_CHANGE_UNIT`.
+- `ANDROID_PROFILE_CANDIDATE` — a reusable subordinate operational delta for a materially distinct Android project/toolchain class while the Android authority/lifecycle model remains valid.
+- `RESEARCH_REQUIRED` — a material technical unknown prevents safe classification or design. Research requires the bounded authorization rules in section 29/37.
+- `NOT_REQUIRED` — current Android Workflow + project specifications already cover the need adequately.
+
+If classification is materially ambiguous:
+
+STOP → persist the ambiguity → Supervisor/Human decision.
+
+`NEW INFORMATION != NEW PROFILE`.
+
+### 38.2 Profile qualification criteria
+
+A candidate qualifies for profile development only when all applicable conditions hold:
+
+1. the proposed delta is meaningfully reusable beyond one isolated project decision;
+2. the universal Android Workflow is intentionally too generic to encode the delta directly;
+3. the profile can remain subordinate to Android authority/lifecycle semantics;
+4. the profile adds operational mechanics rather than concrete product behavior;
+5. its activation trigger can be stated objectively enough for a Work Item;
+6. its evidence/verification model can remain proportional to risk;
+7. it does not require silent architecture, authority, decision-vocabulary, merge, publication, or recovery changes;
+8. project-specific values remain outside the profile unless they are examples clearly marked non-normative;
+9. existing Android baseline coverage and active profile relationships can remain intact.
+
+A profile candidate MUST NOT be used as a shortcut to avoid updating project specifications.
+
+A profile candidate that requires changing the shared authority model, Workflow Document Contract, ADR, baseline adaptation classification, formal semantic decisions, merge/publication boundary, or source-precedence architecture is not a normal profile extension:
+
+STOP → architecture authority.
+
+### 38.3 Authorization and development flow
+
+Required flow:
+
+`CANDIDATE INTAKE`
+→ Supervisor classification
+→ if `ANDROID_PROFILE_CANDIDATE`, bounded fit/non-regression assessment
+→ inform Human
+→ Human `AUTHORIZE | DECLINE | DEFER`
+→ if authorized, create one `WORKFLOW_CHANGE_UNIT` with `CHANGE_TYPE: EXTENSION`
+→ Implementer develops only the authorized profile/change surface
+→ required verification
+→ exact-SHA Supervisor review
+→ `SEMANTIC_ACCEPTED | REWORK | HOLD | ESCALATE`
+→ register/activate only when the current authority permits it.
+
+Human authorization MUST identify at least:
+
+- candidate/profile identity;
+- target Android Workflow base/SHA;
+- authorized paths;
+- intended activation trigger;
+- expected relationship to Android;
+- required evidence;
+- stop conditions.
+
+`PROFILE CANDIDATE != PROFILE AUTHORITY`.
+
+`PROFILE IMPLEMENTATION != PROFILE ACCEPTANCE`.
+
+`PROFILE SEMANTIC_ACCEPTANCE != CANONICAL ADOPTION`.
+
+### 38.4 Android Profile Registry
+
+The Android Workflow keeps a compact registry of accepted/currently recognized specialized profiles so a fresh Supervisor can identify available extensions without broad rediscovery.
+
+The registry is navigation and governance metadata. It does not replace the profile document, Work Item, or exact Supervisor decision.
+
+Record model:
+
+~~~text
+ANDROID_PROFILE_REGISTRY_ENTRY
+
+PROFILE_ID:
+DOCUMENT_REF:
+PURPOSE:
+ACTIVATION_TRIGGER:
+RELATIONSHIP_TO_ANDROID:
+SEMANTIC_REVIEW_REF:
+LIFECYCLE_CLASSIFICATION:
+PROJECT_SPEC_BOUNDARY:
+COMPATIBLE_PROFILE_NOTES:
+LAST_REVIEWED:
+NOTES:
+~~~
+
+`LIFECYCLE_CLASSIFICATION` is registry metadata such as ACTIVE / SUPERSEDED / DEPRECATED / PROVENANCE_ONLY. It is not a replacement for formal Supervisor semantic decisions.
+
+Current registry:
+
+~~~text
+PROFILE_ID: UNITY_GAME
+DOCUMENT_REF: workpacks/workflow-operationalization-01/ANDROID_UNITY_GAME_PROFILE.md
+PURPOSE: Unity/Game Android operational deltas for project identity, generated/source state, local execution, runtime/device/performance/playtest evidence, maturity, and anti-bottleneck behavior.
+ACTIVATION_TRIGGER: active Work Item materially targets Unity/Game execution on Android.
+RELATIONSHIP_TO_ANDROID: EXTENDS ANDROID_WORKFLOW; DOES NOT REPLACE OR OVERRIDE AUTHORITY.
+SEMANTIC_REVIEW_REF: Issue #8 comment 5920197743; later parent-workflow non-regression confirmed by Issue #8 comment 5924385791.
+LIFECYCLE_CLASSIFICATION: ACTIVE DEVELOPMENT PROFILE — NOT CANONICAL.
+PROJECT_SPEC_BOUNDARY: concrete mechanics, balancing, progression, gameplay behavior, performance budgets, device tiers, scenes, protocols, UX/product decisions remain in current project/game specifications and Work Items.
+COMPATIBLE_PROFILE_NOTES: no other profile composition is pre-authorized; apply section 38.5 if another profile is also material.
+LAST_REVIEWED: 2026-10-01
+NOTES: first specialized Android profile used to validate this extension model.
+~~~
+
+Future registry entries MUST be added only through applicable authorized Workflow/profile change and review. Listing an illustrative engine/tool name in discussion does not register it.
+
+### 38.5 Activation and multiple-profile consistency
+
+For an active Android Work Item:
+
+1. identify whether the universal Android Workflow is sufficient;
+2. identify current project specifications;
+3. activate only registered profiles whose trigger materially applies;
+4. list activated profiles in the Work Item/bootstrap when material;
+5. run the document-consistency gate when more than one profile or other normative source can affect the same operation;
+6. stop on material contradiction, ambiguous precedence, or incompatible operational assumptions.
+
+Use:
+
+`ANDROID_WORKFLOW + ACTIVATED_PROFILE_SET + CURRENT_PROJECT_SPECIFICATIONS`.
+
+Precedence remains governed by current Human/Supervisor authority, Work Item, this Workflow, current project specifications in their proper product/engineering domain, and applicable subordinate profile rules as defined by their governing chain.
+
+A profile MUST defer to this Workflow on:
+
+- Human/Supervisor/Implementer authority;
+- formal semantic decisions;
+- Semantic Scope / Path Scope;
+- exact-SHA review;
+- REWORK/current-decision semantics;
+- merge eligibility/authority;
+- canonical adoption;
+- product publication;
+- durable recovery;
+- source precedence where this Workflow governs.
+
+`MULTIPLE PROFILES != AUTOMATIC COMPOSITION`.
+
+### 38.6 Profile maintenance, supersession, and retirement
+
+An accepted profile is maintained through bounded authorized change, not silent drift.
+
+Profile maintenance MUST:
+
+- identify the governing profile and Android parent relationship;
+- identify exact base/current content under review;
+- use `WORKFLOW_CHANGE_UNIT` when the Workflow/profile itself changes;
+- preserve project-specification boundaries;
+- preserve Android authority/lifecycle invariants;
+- update the registry when lifecycle classification or document identity materially changes;
+- obtain exact-SHA Supervisor review for changed normative content.
+
+If a profile is replaced:
+
+- mark the prior registry entry SUPERSEDED or PROVENANCE_ONLY as appropriate;
+- identify the replacement explicitly;
+- do not silently redirect historical Work Items/evidence.
+
+If a profile is deprecated:
+
+- record why;
+- identify whether existing projects may continue using it;
+- identify migration/replacement only when separately authorized;
+- do not delete provenance required to reconstruct prior decisions.
+
+Profile retirement does not imply deletion of evidence.
+
+### 38.7 Profile-extension acceptance tests
+
+## TEST N — Project requirement is not a profile
+
+Scenario:
+A project states a concrete target such as a specific FPS target, device tier, scene requirement, game mechanic, or UX behavior.
+
+Expected:
+Classify as `PROJECT_SPECIFICATION`, not `ANDROID_PROFILE_CANDIDATE`, unless separate reusable operational mechanics independently justify a profile.
+
+## TEST O — New engine/toolchain candidate
+
+Scenario:
+A future Android project uses a materially distinct engine/toolchain whose build, generated/source-state, local execution, or verification mechanics are not adequately represented by universal Android rules.
+
+Expected:
+Create `ANDROID_EXTENSION_CANDIDATE_INTAKE` → Supervisor classifies → no implementation/activation until Human authorization → authorized `WORKFLOW_CHANGE_UNIT / EXTENSION` → exact-SHA review.
+
+No engine/toolchain is pre-approved by this test.
+
+## TEST P — Profile authority adversarial
+
+Cases:
+
+1. A profile document grants itself merge authority.
+   Expected: invalid; Android Workflow governs and conflict is reported.
+
+2. A profile introduces a fifth formal Supervisor semantic decision.
+   Expected: STOP / architecture authority.
+
+3. A profile turns its technical capability into publication authority.
+   Expected: invalid; `TECHNICAL CAPABILITY != WORKFLOW AUTHORITY` and `PUBLISH = HUMAN ACTION`.
+
+4. A profile candidate is useful and technically correct but lacks Human authorization.
+   Expected: do not implement/activate it.
+
+## TEST Q — Multiple-profile conflict
+
+Scenario:
+Two registered profiles are materially activated for one Work Item and prescribe incompatible operational behavior.
+
+Expected:
+`DOCUMENT_CONSISTENCY_GATE` → STOP on unresolved material conflict → no silent precedence invention or automatic composition.
+
+## TEST R — Existing Unity/Game non-regression
+
+Scenario:
+A Unity-based Android Work Item activates the existing Unity/Game profile after this generic extension model is added.
+
+Expected:
+Existing section 10.5 behavior remains valid; Unity/Game stays subordinate, project/game specifications remain authoritative for concrete product behavior, and no new authority is created.
+
+---
 
 # Result
 
